@@ -7,7 +7,6 @@
 #include"lop.h"
 #include <iomanip>
 #include <fstream> 
-//#include<ifstream>
 
 using namespace std;
 /*

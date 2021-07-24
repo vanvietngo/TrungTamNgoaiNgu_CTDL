@@ -11,6 +11,7 @@ học, 2: lớp đã hoàn tất. Thuộc tính contrỏ là con trỏ chỉ đ�
 viên của lớp (con trỏ chỉ đến cây nhị phân tìm kiếm HọcViên).
 */
 	  
+// dataType	  
 struct _LOP{
 	string Ma;
 	int Status;
@@ -24,5 +25,17 @@ struct _DS_LOP{
 	LOP* ds_Lop;
 };
 typedef struct _DS_LOP DS_LOP;
+
+// function 
+
+//Về lớp: thêm / xóa / hiệu chỉnh thông tin lớp.
+int themLop();
+int xoaLop();
+int hieuChinhLop();
+void xuatThongTinLop();
+
+// additional
+
+
 
 #endif    // __lop_H__ 

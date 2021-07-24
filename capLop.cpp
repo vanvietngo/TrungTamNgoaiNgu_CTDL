@@ -13,8 +13,8 @@ int themCapLop(DS_CAPLOP &ds_CapLop){
 	else{
 		CAPLOP* CapLop = new CAPLOP;
 		cout<<"  -------- Them cap lop --------"<<endl;
-		cout<<"Nhap ma: ";cin.ignore(); getline(cin,CapLop->Ma); cout<<endl;
-		cout<<"Nhap ten: "; getline(cin, CapLop->Ten); cout<<endl;
+		cout<<"Nhap ma: ";cin.ignore(); getline(cin,CapLop->Ma); 
+		cout<<"Nhap ten: "; getline(cin, CapLop->Ten); 
        	cout<<"Nhap so tiet: ";
        	while(!(cin>>CapLop->SoTiet)){
        		cout<<"gia tri phai la so";
@@ -198,10 +198,10 @@ void load_CapLopFile(DS_CAPLOP& ds_CapLop){
 		getline(f, CapLop->Ten,','); 
 		
 		f>>(CapLop->SoTiet); 
-		f.ignore(700, ',');
+		f.ignore(256, ',');
 		
 		f>>(CapLop->HocPhi); 
-		f.ignore(700, '\n');
+		f.ignore(256, '\n');
 		
 		ds_CapLop.dsCapLop[ds_CapLop.count] = CapLop;
 		ds_CapLop.count++;
@@ -226,7 +226,7 @@ void save_CapLopFile(DS_CAPLOP ds_CapLop){
 			f<<",";
 			f<<ds_CapLop.dsCapLop[i]->Ten;
 			f<<",";
-			f<<ds_CapLop.dsCapLop[i]->HocPhi;
+			f<<ds_CapLop.dsCapLop[i]->SoTiet;
 			f<<",";
 			f<<ds_CapLop.dsCapLop[i]->HocPhi;
 			f<<",";

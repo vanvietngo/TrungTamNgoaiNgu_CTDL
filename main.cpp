@@ -40,6 +40,10 @@ int main() {
 			cout << endl << endl << endl;
 			switch (choice)
 			{
+			case 0:{
+				kt_choice = false;
+				break;
+			}
 			case 1:
 			{
 				themCapLop(ds_CapLop);
@@ -60,6 +64,7 @@ int main() {
 					hieuChinhCapLop(ds_CapLop);
 					break;
 				}
+			
 				
 		}
 	}
