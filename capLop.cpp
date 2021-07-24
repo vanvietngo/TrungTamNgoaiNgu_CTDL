@@ -36,6 +36,8 @@ int themCapLop(DS_CAPLOP &ds_CapLop){
 			ds_CapLop.count++;
 			cout<<"complete !"<<endl;
 			save_CapLopFile(ds_CapLop);
+		}else{
+			cout<<"loi nhap data"<<endl;
 		}
 	}
 	return 0;
@@ -184,59 +186,48 @@ int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, string MaEdit){
 	return -1; // true for edit
 }
 
-void load_CapLopFile(DS_CAPLOP& ds_CapLop){
-	ifstream  f;
-	f.open("capLop.txt", ios_base::in);
-	if(f.fail()){
-		cout << "file not exis" << endl;
+int load_CapLopFile(DS_CAPLOP& ds_CapLop){
+	cout<<"tao mo load file day"<<endl;
+    FILE * f;
+    	f=fopen("capLop.txt", "rb");
+    	
+    		if(f == NULL){
+		cout<<"file not exist";
+		return 0;
+	}else{
+		cout<<"mo duoc file roi";
+		    ds_CapLop.count =0;
+    while  (fread (&ds_CapLop.dsCapLop[ds_CapLop.count], sizeof (CAPLOP), 1, f)!=0){
+    	cout<<"ds_CapLop.count = "<<ds_CapLop.count<<endl;
+    	       ds_CapLop.count ++;
+	cout<<"ma cap lop = "<<ds_CapLop.dsCapLop[ds_CapLop.count]->Ma<<endl;
 	}
-	else{
-			while (!f.eof())          
-	{
-		CAPLOP* CapLop = new CAPLOP;
-		getline(f, CapLop->Ma,','); 
-		getline(f, CapLop->Ten,','); 
-		
-		f>>(CapLop->SoTiet); 
-		f.ignore(256, ',');
-		
-		f>>(CapLop->HocPhi); 
-		f.ignore(256, '\n');
-		
-		ds_CapLop.dsCapLop[ds_CapLop.count] = CapLop;
-		ds_CapLop.count++;
+	cout<<"ds_CapLop.count after while = "<<ds_CapLop.count<<endl;
+    fclose(f);
 	}
-	}
-
-
-	f.close();
+	return 0;
 }
 
-void save_CapLopFile(DS_CAPLOP ds_CapLop){
-	fstream f;
-	f.open("capLop.txt", ios::out);
-	if (f.fail())
-	{
-		cout << "file not exis" << endl;
-	}
-	else
-	{
-		for(int i=0;i<ds_CapLop.count;i++){
-			f<<ds_CapLop.dsCapLop[i]->Ma;
-			f<<",";
-			f<<ds_CapLop.dsCapLop[i]->Ten;
-			f<<",";
-			f<<ds_CapLop.dsCapLop[i]->SoTiet;
-			f<<",";
-			f<<ds_CapLop.dsCapLop[i]->HocPhi;
-			f<<",";
-			if(i != ds_CapLop.count-1){
-				f<<endl;
-			}
-			
+int save_CapLopFile(DS_CAPLOP ds_CapLop){
+
+	FILE* f;
+	f=fopen("capLop.txt", "wb");
+	if(f == NULL){
+		cout<<"file not exist";
+		exit(1);
+	}else{
+				cout<<"mo dc file roi";
+				cout<<"count = "<<ds_CapLop.count<<endl;
+		for(int i=0; i< ds_CapLop.count; i++){
+			fwrite(&ds_CapLop.dsCapLop[i] , sizeof(CAPLOP), 1, f);
+			cout<<"ds_caplop "<<i<<" = "<<ds_CapLop.dsCapLop[i]->Ma<<endl;
 		}
-		f.close();
+		
+		fclose(f);
 	}
+
+
+
 }
 
 

@@ -47,7 +47,7 @@ int hieuChinhCapLop(DS_CAPLOP &ds_CapLop);
 int check_lap_MCL(DS_CAPLOP ds_CapLop, CAPLOP* CapLop);
 int timViTriXoaCapLop(DS_CAPLOP ds_CapLop, string CapLop);
 int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, string MaEdit);
-void save_CapLopFile(DS_CAPLOP ds_CapLop);
-void load_CapLopFile(DS_CAPLOP &ds_CapLop);
+int save_CapLopFile(DS_CAPLOP ds_CapLop);
+int load_CapLopFile(DS_CAPLOP &ds_CapLop);
 
 #endif
