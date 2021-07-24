@@ -230,7 +230,10 @@ void save_CapLopFile(DS_CAPLOP ds_CapLop){
 			f<<",";
 			f<<ds_CapLop.dsCapLop[i]->HocPhi;
 			f<<",";
-			f<<endl;
+			if(i != ds_CapLop.count-1){
+				f<<endl;
+			}
+			
 		}
 		f.close();
 	}
