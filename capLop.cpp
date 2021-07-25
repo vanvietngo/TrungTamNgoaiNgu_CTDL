@@ -51,15 +51,18 @@ int themCapLop(DS_CAPLOP & ds_CapLop) {
 int xoaCapLop(DS_CAPLOP & ds_CapLop) {
 
   cout << "  -------- Xoa cap lop --------" << endl;
-  string MaCapLop = "";
+//  string MaCapLop = "";
+char MaCapLop[10];
   cout << "Nhap ma: ";
-  cin.ignore();
-  getline(cin, MaCapLop);
+//  cin.ignore();
+//  getline(cin, MaCapLop);
+fflush(stdin);
+cin.getline(MaCapLop,10);
   cout << endl;
   // search pos delete
   int pos = timViTriXoaCapLop(ds_CapLop, MaCapLop);
   // check ma cap lop
-
+//	cout<<"pos = "<<pos;
   if (pos >= 0) {
     if (pos == ds_CapLop.count - 1) {
       delete ds_CapLop.dsCapLop[pos];
@@ -88,14 +91,18 @@ int xoaCapLop(DS_CAPLOP & ds_CapLop) {
 }
 
 int hieuChinhCapLop(DS_CAPLOP & ds_CapLop) {
-  string maCapLop = "";
+//  string maCapLop = "";
+char maCapLop[10];
   CAPLOP * CapLop = new CAPLOP;
 
   cout << "Nhap ma cap lop: ";
-  cin.ignore();
-  getline(cin, maCapLop);
+//  cin.ignore();
+//  getline(cin, maCapLop);
+fflush(stdin);
+cin.getline(maCapLop,10);
   int pos = timViTriXoaCapLop(ds_CapLop, maCapLop);
-
+//int pos = -1;
+//cout<<"pos = "<<pos;
   if (pos >= 0) {
     cout << "Nhap ma new: ";
     cin.getline(CapLop -> Ma,10);
@@ -105,20 +112,21 @@ int hieuChinhCapLop(DS_CAPLOP & ds_CapLop) {
     cout << endl;
     cout << "Nhap so tiet new: ";
     while (!(cin >> CapLop -> SoTiet)) {
-      cout << "gia tri phai la so";
+      cout << "gia tri phai la so: ";
       cin.clear();
       cin.ignore(123, '\n');
       //       		return 0;
     }
     cout << "Nhap hoc phi new: ";
     while (!(cin >> CapLop -> HocPhi)) {
-      cout << "gia tri phai la so";
+      cout << "gia tri phai la so: ";
       cin.clear();
       cin.ignore(123, '\n');
       //       		return 0;
     }
     // check lap Ma cap lop
     //True
+//    cout<<"check lap = "<<check_lapMaCapLopLapEdit(ds_CapLop, pos, CapLop -> Ma);
     if (check_lapMaCapLopLapEdit(ds_CapLop, pos, CapLop -> Ma) == -1) {
       CAPLOP * CapLopDel = ds_CapLop.dsCapLop[pos];
       ds_CapLop.dsCapLop[pos] = CapLop;
@@ -128,9 +136,13 @@ int hieuChinhCapLop(DS_CAPLOP & ds_CapLop) {
       save_CapLopFile(ds_CapLop);
     } else {
       if (check_lapMaCapLopLapEdit(ds_CapLop, pos, CapLop -> Ma) == -2) {
-        cout << "Ma cap lop da ton tai !" << endl;
+        cout << "Danh sach trong !" << endl;
         return 0;
       }
+      else{
+      	cout<<"Ma CAP LOP da ton tai"<<endl;
+      	return 0;
+	  }
     }
   } else {
     cout << "Khong tim thay ma cap lop !";
@@ -164,7 +176,9 @@ void xuatCapLop(DS_CAPLOP ds_CapLop) {
 int check_lap_MCL(DS_CAPLOP ds_CapLop, CAPLOP * CapLop) {
   if (ds_CapLop.count == 0) return 0;
   for (int i = 0; i < ds_CapLop.count; i++) {
-    if (CapLop -> Ma == ds_CapLop.dsCapLop[i] -> Ma) {
+  	
+//    if (CapLop -> Ma == ds_CapLop.dsCapLop[i] -> Ma) {
+if (strcmp(CapLop -> Ma, ds_CapLop.dsCapLop[i] -> Ma)==0) {
       cout << "trung ma cap lop ! khong the them !";
       return 1;
     }

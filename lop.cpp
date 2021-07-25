@@ -14,7 +14,7 @@ int themLop(DS_CAPLOP &ds_CapLop){
 		return 0;
 	}else{
 		//true
-		cout<<"post = "<<posCL;
+//		cout<<"post = "<<posCL;
 //		if(ds_CapLop.dsCapLop[posCL]->ds_Lop.count==0){
 //			cout<<"ds lop null";
 			// tao data cho node lop de them vao dslk
@@ -40,7 +40,7 @@ int themLop(DS_CAPLOP &ds_CapLop){
 					cin.getline(lop->Phong,10);
 					//add node dslk
 					if(ds_CapLop.dsCapLop[posCL]->ds_Lop.count==0){
-						cout<<"Nhap ma phong_0: ";
+						cout<<"Nhap ma phong, lop trong: ";
 						fflush(stdin);
 						cin.getline(lop->Ma,10);
 						addNodeDSLK(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop);
@@ -94,13 +94,13 @@ int xuatThongTinLop(DS_CAPLOP &ds_CapLop){
 			if(ds_CapLop.dsCapLop[posCL]->ds_Lop.count==0){
 			cout<<"ds lop null"<<endl;
 		}else{
-			cout<<"ds lop not null"<<endl;
+//			cout<<"ds lop not null"<<endl;
 			// xuat thong tin cac lop la dslk
 			LOP* p = ds_CapLop.dsCapLop[posCL]->ds_Lop.pHead_Lop;
 			while(p!=NULL){
-				cout<<"inform: "<<p->Ma<<endl;
-				cout<<"inform: "<<p->Phong<<endl;
-				cout<<"inform: "<<p->Status<<endl;
+				cout<<"Ma: "<<p->Ma<<endl;
+				cout<<"Phong: "<<p->Phong<<endl;
+				cout<<"Status: "<<p->Status<<endl;
 				p=p->pNext;
 			}
 		}
