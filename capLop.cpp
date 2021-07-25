@@ -15,8 +15,10 @@ int themCapLop(DS_CAPLOP & ds_CapLop) {
     cout << "  -------- Them cap lop --------" << endl;
     cout << "Nhap ma: ";
 //    cin.ignore();
+	fflush(stdin);
     cin.getline(CapLop -> Ma,10);
     cout << "Nhap ten: ";
+    fflush(stdin);
     cin.getline(CapLop -> Ten,10);
     cout << "Nhap so tiet: ";
     while (!(cin >> CapLop -> SoTiet)) {
@@ -205,11 +207,6 @@ int load_CapLopFile(DS_CAPLOP & ds_CapLop) {
     z++;
   }
   for (int i = 0; i < z; i++) {
-    cout << "ma: " << num[i].Ma << endl;
-    cout << "so tiet: " << num[i].SoTiet << endl;
-    cout << "hocphi: " << num[i].HocPhi << endl;
-    //		cout<<"ten: "<<num[i].Ten<<endl<<endl<<endl;
-
     ds_CapLop.dsCapLop[i] = & num[i];
     ds_CapLop.count++;
   }

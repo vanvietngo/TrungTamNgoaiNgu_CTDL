@@ -1,12 +1,7 @@
 #ifndef	_capLop_heder
 #define	_capLop_heder
 
-#include<iostream>
-#include<stdio.h>
-#include<string> 
-#include"lop.h"
-#include <iomanip>
-#include <fstream> 
+
 #include"dataType.h"
 
 using namespace std;

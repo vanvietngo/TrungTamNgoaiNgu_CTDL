@@ -1,11 +1,14 @@
 #ifndef	_dataType_heder
 #define	_dataType_heder
+
+#include<stdint.h>
 #include<iostream>
 #include<stdio.h>
-#include<stdint.h>
 #include<string> 
-#include <iomanip>
 
+//#include"lop.h"
+#include <iomanip>
+#include <fstream> 
 using namespace std;
 
 struct _DIEM{
