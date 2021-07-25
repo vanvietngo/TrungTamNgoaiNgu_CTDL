@@ -15,8 +15,8 @@ int themLop(DS_CAPLOP &ds_CapLop){
 	}else{
 		//true
 		cout<<"post = "<<posCL;
-		if(ds_CapLop.dsCapLop[posCL]->ds_Lop.count==0){
-			cout<<"ds lop null";
+//		if(ds_CapLop.dsCapLop[posCL]->ds_Lop.count==0){
+//			cout<<"ds lop null";
 			// tao data cho node lop de them vao dslk
 			LOP* lop = new LOP;
 			lop->pNext=NULL;
@@ -39,23 +39,41 @@ int themLop(DS_CAPLOP &ds_CapLop){
 					fflush(stdin);
 					cin.getline(lop->Phong,10);
 					//add node dslk
-					addNodeDSLK(ds_CapLop.dsCapLop[posCL]->ds_Lop, lop);
-				}
-		}else{
-			cout<<"ds lop not null";
-			cout<<ds_CapLop.dsCapLop[posCL]->ds_Lop.pHead_Lop;
-		}
+					if(ds_CapLop.dsCapLop[posCL]->ds_Lop.count==0){
+						cout<<"Nhap ma phong_0: ";
+						fflush(stdin);
+						cin.getline(lop->Ma,10);
+						addNodeDSLK(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop);
+						ds_CapLop.dsCapLop[posCL]->ds_Lop.count++;
+//						cout<<ds_CapLop.dsCapLop[posCL]->ds_Lop.count<<"...............";
+					}else{
+						cout<<"Nhap ma phong: ";
+						fflush(stdin);
+						cin.getline(lop->Ma,10);
+						// check ma lop
+						if(check_LapMaLop(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop->Ma) ==1){
+							//false
+							cout<<"Ma lop da ton tai, khong the them"<<endl;
+							return 0;
+						}else{
+							//true
+						addNodeDSLK(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop);
+						ds_CapLop.dsCapLop[posCL]->ds_Lop.count++;
+//						cout<<ds_CapLop.dsCapLop[posCL]->ds_Lop.count<<"...";
+						return 1;
+						}
+					}
 	}
 	// them lop cho cap lop -- dslk don	
 	
 	return 0;
+}
 }
 
 void addNodeDSLK(DS_LOP &ds_Lop, LOP* lop){
 	if(ds_Lop.count == 0){
 		// add head
 		ds_Lop.pHead_Lop = lop;
-		ds_Lop.count++;
 	}else{
 		LOP* p =  ds_Lop.pHead_Lop;
 		while(p->pNext != NULL){
@@ -63,13 +81,12 @@ void addNodeDSLK(DS_LOP &ds_Lop, LOP* lop){
 		}
 		// tail
 		p->pNext = lop;
-//		lop->pNext=NULL;
 	}
 }
 
 int xuatThongTinLop(DS_CAPLOP &ds_CapLop){
 	char maCapLop[10];
-	cout<<"Nhap ma CAP LOP cua lop can them: ";
+	cout<<"Nhap ma  LOP cua lop can show: ";
 	fflush(stdin);
 	cin.getline(maCapLop,10);
 	// check ma lop can them
@@ -78,14 +95,30 @@ int xuatThongTinLop(DS_CAPLOP &ds_CapLop){
 			cout<<"ds lop null"<<endl;
 		}else{
 			cout<<"ds lop not null"<<endl;
-//			cout<<ds_CapLop.dsCapLop[posCL]->ds_Lop.pHead_Lop;
 			// xuat thong tin cac lop la dslk
 			LOP* p = ds_CapLop.dsCapLop[posCL]->ds_Lop.pHead_Lop;
 			while(p!=NULL){
+				cout<<"inform: "<<p->Ma<<endl;
 				cout<<"inform: "<<p->Phong<<endl;
+				cout<<"inform: "<<p->Status<<endl;
 				p=p->pNext;
 			}
 		}
 }
 
-
+int check_LapMaLop(DS_LOP ds_Lop,char *maLop){
+	if(ds_Lop.count==0){
+		cout<<"count = 0 ko lap "<<endl;
+		return -1;// ko lap
+	}else{
+		LOP*p = ds_Lop.pHead_Lop;
+		while(p!=NULL){
+			if(strcmp(p->Ma, maLop)==0){
+				return 1; // tim thay ma lop giong nhau
+			}
+			p=p->pNext;
+		}
+		cout<<"ko lap "<<endl;
+		return -1; // ko lap
+	}
+}
