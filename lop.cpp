@@ -1,4 +1,6 @@
 #include"lop.h"
+
+// main function
 int themLop(DS_CAPLOP &ds_CapLop){
 	cout<<"... them lop ..."<<endl;
 	// tim ma cap lop 
@@ -51,7 +53,7 @@ int themLop(DS_CAPLOP &ds_CapLop){
 						fflush(stdin);
 						cin.getline(lop->Ma,10);
 						// check ma lop
-						if(check_LapMaLop(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop->Ma) ==1){
+						if(check_LapMaLop(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop->Ma) >0){
 							//false
 							cout<<"Ma lop da ton tai, khong the them"<<endl;
 							return 0;
@@ -70,19 +72,6 @@ int themLop(DS_CAPLOP &ds_CapLop){
 }
 }
 
-void addNodeDSLK(DS_LOP &ds_Lop, LOP* lop){
-	if(ds_Lop.count == 0){
-		// add head
-		ds_Lop.pHead_Lop = lop;
-	}else{
-		LOP* p =  ds_Lop.pHead_Lop;
-		while(p->pNext != NULL){
-			p=p->pNext;
-		}
-		// tail
-		p->pNext = lop;
-	}
-}
 
 int xuatThongTinLop(DS_CAPLOP &ds_CapLop){
 	char maCapLop[10];
@@ -106,19 +95,71 @@ int xuatThongTinLop(DS_CAPLOP &ds_CapLop){
 		}
 }
 
+
+// additional
 int check_LapMaLop(DS_LOP ds_Lop,char *maLop){
 	if(ds_Lop.count==0){
 		cout<<"count = 0 ko lap "<<endl;
 		return -1;// ko lap
 	}else{
 		LOP*p = ds_Lop.pHead_Lop;
+		int pos = 0;
 		while(p!=NULL){
 			if(strcmp(p->Ma, maLop)==0){
-				return 1; // tim thay ma lop giong nhau
+				return pos; // tim thay ma lop giong nhau,  position
 			}
 			p=p->pNext;
+			pos++;
 		}
 		cout<<"ko lap "<<endl;
 		return -1; // ko lap
 	}
 }
+
+void addNodeDSLK(DS_LOP &ds_Lop, LOP* lop){
+	if(ds_Lop.count == 0){
+		// add head
+		ds_Lop.pHead_Lop = lop;
+	}else{
+		LOP* p =  ds_Lop.pHead_Lop;
+		while(p->pNext != NULL){
+			p=p->pNext;
+		}
+		// tail
+		p->pNext = lop;
+	}
+}
+
+
+
+
+
+int deleteNodeDSLK(DS_LOP &ds_Lop, int pos){
+	if(ds_Lop.count == 0){
+		cout<<"danh sach LOP trong."<<endl;
+		return 0;
+	}
+	// ds not null
+	
+	LOP* p = ds_Lop.pHead_Lop;
+	// xoa dau
+	if(pos==0){
+		ds_Lop.pHead_Lop = ds_Lop.pHead_Lop->pNext;
+		delete p;
+		ds_Lop.count--;
+		return 1;//done
+	}
+		// xoa vi tri bat ki
+	
+	int k = 1;
+		
+//	while(p->Pnext->Pnext != NULL && k != pos){
+//		if(strcmp(p->Ma, maLop)==0){//bang nhau
+//		    p = p->Pnext;
+//            ++k;
+//	}
+//		
+//}
+}
+
+
