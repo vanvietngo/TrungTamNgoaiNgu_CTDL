@@ -7,6 +7,7 @@
 #include"lop.h"
 #include <iomanip>
 #include <fstream> 
+#include"dataType.h"
 
 using namespace std;
 /*
@@ -17,22 +18,7 @@ Số tiết học, học phí, con trỏ): con trỏ sẽ trỏ đến các lớ
 */
 
 
-// datatype
-struct _CAPLOP{
-	char	Ma[10];
-	char Ten[10];
-	int SoTiet;
-	int HocPhi;
-	DS_LOP ds_lop;
-};
-typedef struct _CAPLOP CAPLOP;
 
-const int SL_CapLop = 100;
-struct _DS_CAPLOP{
-	int count=0;
-	CAPLOP* dsCapLop[SL_CapLop];
-};
-typedef struct _DS_CAPLOP DS_CAPLOP;
 
 // function
 

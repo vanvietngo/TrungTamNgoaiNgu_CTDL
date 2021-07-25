@@ -4,6 +4,8 @@
 #include<stdio.h>
 #include<string>
 #include"hocVien.h"
+#include"dataType.h"
+
 /*    
 Lớp: danh sách liên kết đơn (Mã lớp, trạng thái, Phòng học, contrỏ). Mỗi lớp
 có 1 mã duy nhất; trạng thái của lớp bao gồm: 0: lớp chuẩn bị mở, 1: lớp đang 
@@ -12,19 +14,7 @@ viên của lớp (con trỏ chỉ đến cây nhị phân tìm kiếm HọcViê
 */
 	  
 // dataType	  
-struct _LOP{
-	char Ma[10];
-	int Status;
-	char Phong[10];
-	DS_HOCVIEN ds_HocVien;
-};      
-typedef struct _LOP LOP;
 
-struct _DS_LOP{
-	int count = 0;
-	LOP* ds_Lop;
-};
-typedef struct _DS_LOP DS_LOP;
 
 // function 
 
