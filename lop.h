@@ -13,9 +13,9 @@ viên của lớp (con trỏ chỉ đến cây nhị phân tìm kiếm HọcViê
 	  
 // dataType	  
 struct _LOP{
-	string Ma;
+	char Ma[10];
 	int Status;
-	string Phong;
+	char Phong[10];
 	DS_HOCVIEN ds_HocVien;
 };      
 typedef struct _LOP LOP;

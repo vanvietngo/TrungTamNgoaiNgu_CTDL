@@ -19,8 +19,8 @@ Số tiết học, học phí, con trỏ): con trỏ sẽ trỏ đến các lớ
 
 // datatype
 struct _CAPLOP{
-	string	Ma;
-	string Ten;
+	char	Ma[10];
+	char Ten[10];
 	int SoTiet;
 	int HocPhi;
 	DS_LOP ds_lop;

@@ -15,9 +15,9 @@ trỏ đến danh sách các điểm (nghe, nói, đọc, viết) của học vi
 
 struct _HOCVIEN{
 	int Ma;	//random
-	string Ho;
-	string Ten;
-	string Phai;
+	char Ho[10];
+	char Ten[10];
+	char Phai[5];
 	struct _HOCVIEN* pLeft;
 	struct _HOCVIEN* pRight;
 	DS_DIEM ds_diem;

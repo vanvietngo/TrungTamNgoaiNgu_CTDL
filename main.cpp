@@ -14,7 +14,7 @@ int main() {
 
 		bool kt_choice = true;
 		system("cls");
-			load_CapLopFile(ds_CapLop);
+//			load_CapLopFile(ds_CapLop);
 
 		while (kt_choice) {
 			cout << endl << endl << endl;
