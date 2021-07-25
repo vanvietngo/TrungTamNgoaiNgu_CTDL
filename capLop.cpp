@@ -224,7 +224,6 @@ int save_CapLopFile(DS_CAPLOP ds_CapLop) {
   } else {
     for (int i = 0; i < ds_CapLop.count; i++) {
       fwrite(ds_CapLop.dsCapLop[i], sizeof(CAPLOP), 1, f);
-      cout << "ds_CapLop.dsCapLop[i].Ma = " << ds_CapLop.dsCapLop[i] -> Ma << endl;
     }
     fclose(f);
   }

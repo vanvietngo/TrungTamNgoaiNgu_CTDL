@@ -23,7 +23,7 @@ int themLop(DS_CAPLOP &ds_CapLop);
 //void xuatThongTinLop();
 
 // additional
-
-
+void addNodeDSLK(DS_LOP &ds_Lop, LOP* lop);
+int xuatThongTinLop(DS_CAPLOP &ds_CapLop);
 
 #endif    // __lop_H__ 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include"capLop.h"
-
+#include"lop.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
@@ -10,11 +10,10 @@ DS_CAPLOP ds_CapLop;
 
 int main() {
 	int choice;
-//	load_CapLopFile(ds_CapLop);
+	load_CapLopFile(ds_CapLop);
 
 		bool kt_choice = true;
 		system("cls");
-//			load_CapLopFile(ds_CapLop);
 
 		while (kt_choice) {
 			cout << endl << endl << endl;
@@ -26,7 +25,7 @@ int main() {
 			cout << "| 2: Xuat thong tin cap lop              |" << endl;
 			cout << "| 3: Xoa thong tin cap lop               |" << endl;
 			cout << "| 4: Hieu chinh thong tin cap lop        |" << endl;
-
+			cout << "| 5: Them     lop                        |" << endl;
 			//-----------------------------------
 			cout<<endl;
 			cout << "| Nhap lua chon:                       ";
@@ -67,7 +66,26 @@ int main() {
 					break;
 				}
 			
-				
+			case 5:
+				{
+					themLop(ds_CapLop);
+					break;
+				}		
+			case 6:
+				{
+					xuatThongTinLop(ds_CapLop);
+					break;
+				}
+						case 7:
+				{
+//					xuatThongTinLop(ds_CapLop);
+					break;
+				}
+						case 8:
+				{
+//					xuatThongTinLop(ds_CapLop);
+					break;
+				}	
 		}
 	}
 		
