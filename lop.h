@@ -18,12 +18,13 @@ viên của lớp (con trỏ chỉ đến cây nhị phân tìm kiếm HọcViê
 
 //Về lớp: thêm / xóa / hiệu chỉnh thông tin lớp.
 int themLop(DS_CAPLOP &ds_CapLop);
+int xuatThongTinLop(DS_CAPLOP &ds_CapLop);
 //int xoaLop();
 //int hieuChinhLop();
 //void xuatThongTinLop();
 
 // additional
 void addNodeDSLK(DS_LOP &ds_Lop, LOP* lop);
-int xuatThongTinLop(DS_CAPLOP &ds_CapLop);
+
 int check_LapMaLop(DS_LOP ds_Lop,char *maLop);
 #endif    // __lop_H__ 
