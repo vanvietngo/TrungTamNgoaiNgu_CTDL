@@ -133,7 +133,7 @@ int xoaLop(DS_CAPLOP & ds_CapLop) {
 	}
 
     // xoa lop
-	// cout<<"Ma lop co ton tai"<<endl;
+	cout<<"Ma lop co ton tai"<<endl;
 	deleteNodeDSLK(ds_CapLop.dsCapLop[PosCL]->ds_Lop, posLop);
 	cout<<" ... complete ..."<<endl;
 	return 1;
@@ -204,26 +204,15 @@ int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
 	// xoa cuoi
 	if(pos == ds_Lop.count - 1){
 		p = ds_Lop.pHead_Lop;
-		while(p->pNext->pNext != NULL){
+		while(p->pNext != NULL){
 			p=p->pNext;
 		}
-		LOP* pdel = p->pNext;
+		LOP* pdel = p->pNext->pNext;
 		p->pNext = NULL;
 		delete pdel;
 		ds_Lop.count--;
 		return 1;
 	}
 	// xoa node bat ki o giua
-	int mid = 1;
-	p = ds_Lop.pHead_Lop;
-	while(p->pNext->pNext != NULL && mid != pos){
-		p = p->pNext;
-		mid++;
-	}
-	// xoa
-	LOP* pdel = p->pNext;
-	p->pNext = p->pNext->pNext;
-	delete pdel;
-	ds_Lop.count --;
 	return 1;
 }
