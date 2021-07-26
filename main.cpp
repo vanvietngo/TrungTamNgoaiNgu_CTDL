@@ -57,7 +57,7 @@ int main() {
 				}
 			case 3:
 				{
-					// xoaCapLop(ds_CapLop);
+					xoaCapLop(ds_CapLop);
 					break;
 				}
 			case 4:

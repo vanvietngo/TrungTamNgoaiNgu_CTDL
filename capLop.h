@@ -20,7 +20,7 @@ Số tiết học, học phí, con trỏ): con trỏ sẽ trỏ đến các lớ
 //Về cấp lớp: thêm / xóa / hiệu chỉnh thông tin cấp lớp.
 
 int themCapLop(DS_CAPLOP &ds_CapLop);
-// int xoaCapLop(DS_CAPLOP &ds_CapLop);
+ int xoaCapLop(DS_CAPLOP &ds_CapLop);
 void xuatCapLop(DS_CAPLOP ds_CapLop);
 int hieuChinhCapLop(DS_CAPLOP &ds_CapLop);
 

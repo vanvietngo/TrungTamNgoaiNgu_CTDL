@@ -191,8 +191,6 @@ int timViTriXoaCapLop(DS_CAPLOP ds_CapLop, char* maCapLop) {
   for (int i = 0; i < ds_CapLop.count; i++) {
     // if (CapLop == ds_CapLop.dsCapLop[i] -> Ma) {
       if (strcmp(maCapLop , ds_CapLop.dsCapLop[i] -> Ma)==0) {
-//    	strcmp(CapLop , ds_CapLop.dsCapLop[i] -> Ma)==0
-  cout<<"i = "<<i;
       return i; // tim thay ma cap lop theo input string
     }
   }
