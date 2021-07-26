@@ -25,4 +25,5 @@ void addNodeDSLK(DS_LOP &ds_Lop, LOP* lop);
 int check_LapMaLop(DS_LOP ds_Lop,char *maLop);
 int deleteNodeDSLK(DS_LOP & ds_Lop, int pos);
 
+
 #endif    // __lop_H__ 
