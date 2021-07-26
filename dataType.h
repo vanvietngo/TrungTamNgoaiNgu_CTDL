@@ -38,6 +38,7 @@ struct _HOCVIEN{
 };      
 typedef struct _HOCVIEN HOCVIEN;
 
+
 struct _DS_HOCVIEN{
 	int count = 0;
 	HOCVIEN* dsHocVien=NULL;
@@ -54,6 +55,7 @@ struct _LOP{
 	_LOP* pNext;
 };      
 typedef struct _LOP LOP;
+
 
 struct _DS_LOP{
 	int count = 0;

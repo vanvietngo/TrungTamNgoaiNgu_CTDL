@@ -11,10 +11,8 @@ DS_CAPLOP ds_CapLop;
 int main() {
 	int choice;
 	load_CapLopFile(ds_CapLop);
-
 		bool kt_choice = true;
 		system("cls");
-
 		while (kt_choice) {
 			cout << endl << endl << endl;
 			cout << "------ ------ ------ ------ ------ -------" << endl;
@@ -25,7 +23,9 @@ int main() {
 			cout << "| 2: Xuat thong tin cap lop              |" << endl;
 			cout << "| 3: Xoa thong tin cap lop               |" << endl;
 			cout << "| 4: Hieu chinh thong tin cap lop        |" << endl;
-			cout << "| 5: Them     lop                        |" << endl;
+			cout << "| 5: Them lop                            |" << endl;
+			cout << "| 6: Xuat thong tin lop                  |" << endl;
+			cout << "| 7: Xoa lop                             |" << endl;
 			//-----------------------------------
 			cout<<endl;
 			cout << "| Nhap lua chon:                       ";
@@ -77,9 +77,9 @@ int main() {
 					xuatThongTinLop(ds_CapLop);
 					break;
 				}
-						case 7:
+			case 7:
 				{
-//					xuatThongTinLop(ds_CapLop);
+					xoaLop(ds_CapLop);
 					break;
 				}
 						case 8:
