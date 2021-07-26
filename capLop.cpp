@@ -186,23 +186,26 @@ if (strcmp(CapLop -> Ma, ds_CapLop.dsCapLop[i] -> Ma)==0) {
   return 0;
 }
 
-int timViTriXoaCapLop(DS_CAPLOP ds_CapLop, string CapLop) {
+int timViTriXoaCapLop(DS_CAPLOP ds_CapLop, char* maCapLop) {
   if (ds_CapLop.count == 0) return -2; // danh sach trong
   for (int i = 0; i < ds_CapLop.count; i++) {
-    if (CapLop == ds_CapLop.dsCapLop[i] -> Ma) {
+    // if (CapLop == ds_CapLop.dsCapLop[i] -> Ma) {
+      if (strcmp(maCapLop , ds_CapLop.dsCapLop[i] -> Ma)==0) {
+//    	strcmp(CapLop , ds_CapLop.dsCapLop[i] -> Ma)==0
+  cout<<"i = "<<i;
       return i; // tim thay ma cap lop theo input string
     }
   }
   return -1;
 }
 
-int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, string MaEdit) {
+int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, char* MaEdit) {
 
   if (ds_CapLop.count == 0) {
     return -2; // false for edit
   }
   for (int i = 0; i < ds_CapLop.count; i++) {
-    if (MaEdit == ds_CapLop.dsCapLop[i] -> Ma && i != pos) {
+    if (strcmp(MaEdit , ds_CapLop.dsCapLop[i] -> Ma)==0 && i != pos) {
       return i; // false for edit
     }
   }

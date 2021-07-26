@@ -20,14 +20,14 @@ Số tiết học, học phí, con trỏ): con trỏ sẽ trỏ đến các lớ
 //Về cấp lớp: thêm / xóa / hiệu chỉnh thông tin cấp lớp.
 
 int themCapLop(DS_CAPLOP &ds_CapLop);
-int xoaCapLop(DS_CAPLOP &ds_CapLop);
+// int xoaCapLop(DS_CAPLOP &ds_CapLop);
 void xuatCapLop(DS_CAPLOP ds_CapLop);
 int hieuChinhCapLop(DS_CAPLOP &ds_CapLop);
 
 // function bo sung
 int check_lap_MCL(DS_CAPLOP ds_CapLop, CAPLOP* CapLop);
-int timViTriXoaCapLop(DS_CAPLOP ds_CapLop, string CapLop);
-int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, string MaEdit);
+int timViTriXoaCapLop(DS_CAPLOP ds_CapLop, char* maCapLop);
+int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, char* MaEdit);
 int save_CapLopFile(DS_CAPLOP ds_CapLop);
 int load_CapLopFile(DS_CAPLOP &ds_CapLop);
 
