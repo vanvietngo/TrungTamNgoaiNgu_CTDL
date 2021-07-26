@@ -94,11 +94,23 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
             //			cout<<"ds lop not null"<<endl;
             // xuat thong tin cac lop la dslk
             LOP * p = ds_CapLop.dsCapLop[posCL] -> ds_Lop.pHead_Lop;
+			    cout << "Danh sach cap lop: " << endl;
+    cout << setw(5) << left << "Stt";
+    cout << setw(15) << left << "Ma";
+    cout << setw(15) << left << "Phong";
+    cout << setw(10) << left << "Status"<<endl;
+    cout << setfill('.');
+    cout << setw(50) << "" << endl;
+    cout << setfill(' ');
+	int k = 0;
             while (p != NULL) {
-                cout << "Ma: " << p -> Ma << endl;
-                cout << "Phong: " << p -> Phong << endl;
-                cout << "Status: " << p -> Status << endl;
+				  cout << setw(5) << left << k;
+
+                cout << setw(15) << left << p -> Ma ;
+                cout << setw(15) << left  << p -> Phong ;
+                cout <<setw(10) << left  << p -> Status << endl;
                 p = p -> pNext;
+				k++;
             }
         }
     }
