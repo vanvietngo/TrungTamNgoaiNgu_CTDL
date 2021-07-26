@@ -31,4 +31,5 @@ int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, char* MaEdit);
 int save_CapLopFile(DS_CAPLOP ds_CapLop);
 int load_CapLopFile(DS_CAPLOP &ds_CapLop);
 
+
 #endif
