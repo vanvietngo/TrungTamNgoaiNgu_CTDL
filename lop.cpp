@@ -225,3 +225,6 @@ int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
 	ds_Lop.count --;
 	return 1;
 }
+
+
+//
