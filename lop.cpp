@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #include"lop.h"
 
 // main function
@@ -218,4 +216,3 @@ int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
 
 
 //
->>>>>>> beta2
