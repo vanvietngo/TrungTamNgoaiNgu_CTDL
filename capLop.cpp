@@ -214,7 +214,7 @@ int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, char * MaEdit) {
 int load_CapLopFile(DS_CAPLOP & ds_CapLop) {
     CAPLOP num[100];
     FILE * fptr;
-    if ((fptr = fopen("capLop.txt", "rb")) == NULL) {
+    if ((fptr = fopen(pathCapLop, "rb")) == NULL) {
         printf("Error! opening file");
         exit(1);
     }
@@ -233,7 +233,7 @@ int load_CapLopFile(DS_CAPLOP & ds_CapLop) {
 
 int save_CapLopFile(DS_CAPLOP ds_CapLop) {
     FILE * f;
-    f = fopen("capLop.txt", "wb");
+    f = fopen(pathCapLop, "wb");
     if (f == NULL) {
         cout << "error open file";
         exit(1);

@@ -139,6 +139,20 @@ int xoaLop(DS_CAPLOP & ds_CapLop) {
 	return 1;
 }
 
+int editLop(DS_CAPLOP & ds_CapLop){
+	// nhap ma CAP LOP cua LOP can edit
+	
+	// check ma CAP LOP va tim vi tri
+	
+	// nhap ma LOP can edit
+	
+	// check ma LOP va tim vi tri
+	
+	// edit
+}
+
+
+
 // additional
 int check_LapMaLop(DS_LOP ds_Lop, char * maLop) {
     if (ds_Lop.count == 0) {

@@ -11,6 +11,8 @@
 #include <fstream> 
 using namespace std;
 
+char pathCapLop[]="C:\\Users\\Node Js\\Documents\\Duy\\databaseC++\\capLop.txt";
+
 struct _DIEM{
 	int Skill;	
 	struct _DIEM* next;
