@@ -194,7 +194,7 @@ int timViTriXoaCapLop(DS_CAPLOP ds_CapLop, char* maCapLop) {
       return i; // tim thay ma cap lop theo input string
     }
   }
-  return -1;
+  return -1; // ko tim thay ma cap lop
 }
 
 int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, char* MaEdit) {

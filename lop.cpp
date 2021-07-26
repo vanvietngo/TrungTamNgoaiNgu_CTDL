@@ -47,7 +47,7 @@ int themLop(DS_CAPLOP &ds_CapLop){
 						cin.getline(lop->Ma,10);
 						addNodeDSLK(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop);
 						ds_CapLop.dsCapLop[posCL]->ds_Lop.count++;
-//						cout<<ds_CapLop.dsCapLop[posCL]->ds_Lop.count<<"...............";
+						cout<<"...complete..."<<endl;
 					}else{
 						cout<<"Nhap ma phong: ";
 						fflush(stdin);
@@ -61,7 +61,7 @@ int themLop(DS_CAPLOP &ds_CapLop){
 							//true
 						addNodeDSLK(ds_CapLop.dsCapLop[posCL]->ds_Lop,lop);
 						ds_CapLop.dsCapLop[posCL]->ds_Lop.count++;
-//						cout<<ds_CapLop.dsCapLop[posCL]->ds_Lop.count<<"...";
+						cout<<"...complete..."<<endl;
 						return 1;
 						}
 					}
@@ -80,8 +80,10 @@ int xuatThongTinLop(DS_CAPLOP &ds_CapLop){
 	cin.getline(maCapLop,10);
 	// check ma lop can them
 	int posCL = timViTriXoaCapLop(ds_CapLop, maCapLop);
+//	cout<<"pos = "<<posCL;
 			if(ds_CapLop.dsCapLop[posCL]->ds_Lop.count==0){
 			cout<<"ds lop null"<<endl;
+			return 0;
 		}else{
 //			cout<<"ds lop not null"<<endl;
 			// xuat thong tin cac lop la dslk
@@ -93,6 +95,7 @@ int xuatThongTinLop(DS_CAPLOP &ds_CapLop){
 				p=p->pNext;
 			}
 		}
+		return 0;
 }
 
 

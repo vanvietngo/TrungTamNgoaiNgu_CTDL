@@ -69,7 +69,7 @@ int main() {
 			case 5:
 				{
 					themLop(ds_CapLop);
-					save_CapLopFile(ds_CapLop);
+//					save_CapLopFile(ds_CapLop);
 					break;
 				}		
 			case 6:
