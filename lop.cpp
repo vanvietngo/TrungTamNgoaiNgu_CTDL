@@ -49,6 +49,8 @@ int themLop(DS_CAPLOP & ds_CapLop) {
                 cin.getline(lop -> Ma, 10);
                 addNodeDSLK(ds_CapLop.dsCapLop[posCL] -> ds_Lop, lop);
                 ds_CapLop.dsCapLop[posCL] -> ds_Lop.count++;
+
+                saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, ds_CapLop.dsCapLop[posCL]->Ma);
                 cout << "...complete..." << endl;
             } else {
                 cout << "Nhap ma phong: ";
@@ -63,13 +65,14 @@ int themLop(DS_CAPLOP & ds_CapLop) {
                     //true
                     addNodeDSLK(ds_CapLop.dsCapLop[posCL] -> ds_Lop, lop);
                     ds_CapLop.dsCapLop[posCL] -> ds_Lop.count++;
+                    saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, ds_CapLop.dsCapLop[posCL]->Ma);
                     cout << "...complete..." << endl;
                     return 1;
                 }
             }
         }
-        // them lop cho cap lop -- dslk don	
-
+        // save file LOP voi name = ten ma CAP LOP
+        // moi CAP LOP co 1 file LoOP rieng theo ma~
         return 0;
     }
 }
@@ -147,6 +150,7 @@ int xoaLop(DS_CAPLOP & ds_CapLop) {
     // xoa lop
 	// cout<<"Ma lop co ton tai"<<endl;
 	deleteNodeDSLK(ds_CapLop.dsCapLop[PosCL]->ds_Lop, posLop);
+    saveFileLop(ds_CapLop.dsCapLop[PosCL] -> ds_Lop, ds_CapLop.dsCapLop[PosCL]->Ma);
 	cout<<" ... complete ..."<<endl;
 	return 1;
 }
@@ -225,6 +229,23 @@ int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
 	ds_Lop.count --;
 	return 1;
 }
+
+int saveFileLop(DS_LOP ds_Lop, char* fileLop) {
+    FILE * f;
+    f = fopen(fileLop, "wb");
+    if (f == NULL) {
+        cout << "error open file";
+        exit(1);
+    } else {
+        LOP* p = ds_Lop.pHead_Lop;
+        while(p!= NULL) {
+            fwrite(p, sizeof(LOP), 1, f);
+            p= p->pNext;
+        }
+        fclose(f);
+    }
+}
+
 
 
 //

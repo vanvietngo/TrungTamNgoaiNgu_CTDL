@@ -10,9 +10,10 @@ DS_CAPLOP ds_CapLop;
 
 int main() {
 	int choice;
-	load_CapLopFile(ds_CapLop);
+	
 		bool kt_choice = true;
 		system("cls");
+		load_CapLopFile(ds_CapLop);
 		while (kt_choice) {
 			cout << endl << endl << endl;
 			cout << "------ ------ ------ ------ ------ -------" << endl;
