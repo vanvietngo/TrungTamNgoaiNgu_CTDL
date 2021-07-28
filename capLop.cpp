@@ -213,20 +213,21 @@ int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, char * MaEdit) {
     return -1; // true for edit
 }
 
-int load_CapLopFile(DS_CAPLOP & ds_CapLop) {
+int load_CapLopFile(DS_CAPLOP & ds_CapLop, char* fileName) {
     CAPLOP num[100];
     FILE * fptr;
-    if ((fptr = fopen("capLop.txt", "rb")) == NULL) {
+    if ((fptr = fopen(fileName, "rb")) == NULL) {
         printf("Error! opening file");
-        exit(1);
+        // exit(1);
     }
     int z = 0;
     while (fread( & num[z], sizeof(CAPLOP), 1, fptr)) {
-        z++;
+        ++z;
     }
     for (int i = 0; i < z; i++) {
         ds_CapLop.dsCapLop[i] = & num[i];
         ds_CapLop.dsCapLop[i]->ds_Lop.pHead_Lop = NULL;
+        ds_CapLop.dsCapLop[i]->ds_Lop.count = 0;
         ds_CapLop.count++;
     }
     fclose(fptr);
@@ -234,12 +235,12 @@ int load_CapLopFile(DS_CAPLOP & ds_CapLop) {
     return 0;
 }
 
-int save_CapLopFile(DS_CAPLOP ds_CapLop) {
+int save_CapLopFile(DS_CAPLOP ds_CapLop, char* fileName) {
     FILE * f;
-    f = fopen("capLop.txt", "wb");
+    f = fopen(fileName, "wb");
     if (f == NULL) {
         cout << "error open file";
-        exit(1);
+        // exit(1);
     } else {
         for (int i = 0; i < ds_CapLop.count; i++) {
             fwrite(ds_CapLop.dsCapLop[i], sizeof(CAPLOP), 1, f);

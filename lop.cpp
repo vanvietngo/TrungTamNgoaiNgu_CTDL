@@ -91,7 +91,7 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
     cin.getline(maCapLop, 10);
     // check ma lop can them
     int posCL = timViTriXoaCapLop(ds_CapLop, maCapLop);
-    // cout<<"Poscl = "<<posCL<<endl;
+    cout<<"Poscl = "<<posCL<<endl;
     if (posCL < 0) {
         // false
         cout << "Ma CAP LOP khong ton tai" << endl;
@@ -238,56 +238,7 @@ int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
     return 1;
 }
 
-int saveFileLop(DS_LOP ds_Lop, char* fileLop) {
-    FILE * f;
-    f = fopen(fileLop, "wb");
-    if (f == NULL) {
-        cout << "";
-    //        exit(1);
-    } else {
-        LOP* p = ds_Lop.pHead_Lop;
-        while(p!= NULL) {
-            fwrite(p, sizeof(LOP), 1, f);
-            p= p->pNext;
-        }
-        fclose(f);
-    }
-}
 
-
-
-//
-int openFileLop(DS_LOP& ds_Lop, char* fileLop) {
-    FILE * f;
-    f = fopen(fileLop, "rb");
-    if (f == NULL) {
-        cout << "";
-        //        exit(1);
-    } else {
-        LOP lop;
-        ds_Lop.count = 0;
-        while (fread( & lop, sizeof(LOP), 1, f)) {
-            LOP* l = new LOP;
-            *l = lop;
-            l->pNext = NULL;
-
-            if(ds_Lop.pHead_Lop == NULL) {
-                ds_Lop.pHead_Lop = l;
-                ds_Lop.count++;
-            } else {
-                LOP*  p;
-                p = ds_Lop.pHead_Lop;
-                while(p->pNext != NULL) {
-                    p = p->pNext ;
-                }
-                p->pNext = l;
-                ds_Lop.count++;
-            }
-        }
-        fclose(f);
-    }
-    return 0;
-}
 
 
 int hieuChinhLop(DS_CAPLOP &ds_CapLop)  {
@@ -429,3 +380,53 @@ int hieuChinhLop(DS_CAPLOP &ds_CapLop)  {
     return 0;
 }
 //
+int saveFileLop(DS_LOP ds_Lop, char* fileLop) {
+    FILE * f;
+    f = fopen(fileLop, "wb");
+    if (f == NULL) {
+        cout << "";
+    //        exit(1);
+    } else {
+        LOP* p = ds_Lop.pHead_Lop;
+        while(p!= NULL) {
+            fwrite(p, sizeof(LOP), 1, f);
+            p= p->pNext;
+        }
+        fclose(f);
+    }
+}
+
+
+
+//
+int openFileLop(DS_LOP& ds_Lop, char* fileLop) {
+    FILE * f;
+    f = fopen(fileLop, "rb");
+    if (f == NULL) {
+        cout << "";
+        //        exit(1);
+    } else {
+        LOP lop;
+        ds_Lop.count = 0;
+        while (fread( & lop, sizeof(LOP), 1, f)) {
+            LOP* l = new LOP;
+            *l = lop;
+            l->pNext = NULL;
+
+            if(ds_Lop.pHead_Lop == NULL) {
+                ds_Lop.pHead_Lop = l;
+                ds_Lop.count++;
+            } else {
+                LOP*  p;
+                p = ds_Lop.pHead_Lop;
+                while(p->pNext != NULL) {
+                    p = p->pNext ;
+                }
+                p->pNext = l;
+                ds_Lop.count++;
+            }
+        }
+        fclose(f);
+    }
+    return 0;
+}
