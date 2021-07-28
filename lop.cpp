@@ -50,10 +50,10 @@ int themLop(DS_CAPLOP & ds_CapLop) {
                 addNodeDSLK(ds_CapLop.dsCapLop[posCL] -> ds_Lop, lop);
                 ds_CapLop.dsCapLop[posCL] -> ds_Lop.count++;
 //
-                char b[20]="";
-                strcat(b, ds_CapLop.dsCapLop[posCL]->Ma);
-                strcat(b, ".txt");
-                saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, b);
+                // char b[20]="";
+                // strcat(b, ds_CapLop.dsCapLop[posCL]->Ma);
+                // strcat(b, ".txt");
+                // saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, b);
                 cout << "...complete..." << endl;
             } else {
                 cout << "Nhap ma phong: ";
@@ -69,10 +69,10 @@ int themLop(DS_CAPLOP & ds_CapLop) {
                     addNodeDSLK(ds_CapLop.dsCapLop[posCL] -> ds_Lop, lop);
                     ds_CapLop.dsCapLop[posCL] -> ds_Lop.count++;
 
-                    char b[20]="";
-                    strcat(b, ds_CapLop.dsCapLop[posCL]->Ma);
-                    strcat(b, ".txt");
-                    saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, b);
+                    // char b[20]="";
+                    // strcat(b, ds_CapLop.dsCapLop[posCL]->Ma);
+                    // strcat(b, ".txt");
+                    // saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, b);
                     cout << "...complete..." << endl;
                     return 1;
                 }
@@ -158,7 +158,7 @@ int xoaLop(DS_CAPLOP & ds_CapLop) {
     // xoa lop
     // cout<<"Ma lop co ton tai"<<endl;
     deleteNodeDSLK(ds_CapLop.dsCapLop[PosCL]->ds_Lop, posLop);
-    saveFileLop(ds_CapLop.dsCapLop[PosCL] -> ds_Lop, ds_CapLop.dsCapLop[PosCL]->Ma);
+    // saveFileLop(ds_CapLop.dsCapLop[PosCL] -> ds_Lop, ds_CapLop.dsCapLop[PosCL]->Ma);
     cout<<" ... complete ..."<<endl;
     return 1;
 }
@@ -290,3 +290,93 @@ int openFileLop(DS_LOP& ds_Lop, char* fileLop) {
 }
 
 
+int hieuChinhLop(DS_CAPLOP &ds_CapLop)  {
+    // nhap ma CAP LOP cua LOP can edit
+    char maCapLop[10];
+    cout << "Nhap ma CAP LOP cua LOP can xoa: ";
+    fflush(stdin);
+    cin.getline(maCapLop, 10);
+
+    // check ma cap lop va tim vi tri
+    int PosCL = timViTriXoaCapLop(ds_CapLop,maCapLop);
+    if(PosCL<0) {
+        cout<<"Ma CAP LOP khong ton tai!"<<endl;
+        return 0;
+    }
+    // nhap ma Lop can edit
+    char maLop[10];
+    cout<<"Nhap MA LOP can edit: ";
+    fflush(stdin);
+    cin.getline(maLop,10);
+
+    // check ma lop  va tim vi tri trong dslk
+    int posLop = check_LapMaLop(ds_CapLop.dsCapLop[PosCL]->ds_Lop, maLop);
+    
+    if(posLop < 0) {
+        cout<<"ma LOP khong ton tai !"<<endl;
+        return 0;
+    }
+
+    // edit - ma lop co ton tai
+    LOP* lopEdit ;
+    lopEdit = ds_CapLop.dsCapLop[PosCL]->ds_Lop.pHead_Lop;
+    // int z = 0;
+    // while(z != posLop) {
+    //     lopEdit = lopEdit->pNext;
+    //     z++;
+    // }
+
+    //tim node edit
+
+    while (lopEdit != NULL) {
+        if (strcmp(lopEdit -> Ma, maLop) == 0 ) {
+            LOP* l = new LOP;
+            cout<<"Nhap ma lop new: ";
+            fflush(stdin);
+            cin.getline(l -> Ma, 10);
+
+            // check ma lop moi co trung vs ma lop cu ko
+            int c = 0;
+            LOP* lopEdit2 ;
+            lopEdit2 = ds_CapLop.dsCapLop[PosCL]->ds_Lop.pHead_Lop;
+            while (lopEdit2 != NULL) {
+                if (strcmp(lopEdit2 -> Ma, l -> Ma) == 0 && c != posLop) {
+                    cout<<"Ma lop moi: "<<l -> Ma<<" da ton tai ."<<endl;
+                    return 0;
+                }
+                lopEdit2 = lopEdit2 -> pNext;
+                c++;
+            }
+                                // true , edit go on
+                    // ma lop moi ko trung voi cac ma lop cu khac
+                    cout<<"Nhap Status lop new: ";
+                    while (!(cin >> l -> Status)) {
+                        cout << "gia tri phai la so: ";
+                        cin.clear();
+                        cin.ignore(123, '\n');
+                        //       		return 0;
+                    }
+                    cout<<"Nhap phong lop new: ";
+                    fflush(stdin);
+                    cin.getline(l -> Phong, 10);
+
+                    // gan
+
+                    
+
+
+
+                    // saveFileLop(ds_CapLop.dsCapLop[PosCL] -> ds_Lop, ds_CapLop.dsCapLop[PosCL]->Ma);
+                    cout<<" ... complete ..."<<endl;
+                    return 1;
+
+            // return pos; // tim thay ma lop giong nhau,  position
+        }
+        lopEdit = lopEdit -> pNext;
+
+    }
+    // ko tim thay
+    cout<<"Khong tim thay ma LOP can edit"<<endl;
+    return 0;
+}
+//

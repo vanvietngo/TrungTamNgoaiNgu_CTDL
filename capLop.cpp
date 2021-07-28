@@ -40,7 +40,7 @@ int themCapLop(DS_CAPLOP & ds_CapLop) {
             ds_CapLop.dsCapLop[ds_CapLop.count] = CapLop;
             ds_CapLop.count++;
             cout << "complete !" << endl;
-            save_CapLopFile(ds_CapLop);
+            // save_CapLopFile(ds_CapLop);
         } else {
             cout << "loi nhap data" << endl;
         }
@@ -69,7 +69,7 @@ int xoaCapLop(DS_CAPLOP & ds_CapLop) {
             ds_CapLop.dsCapLop[pos] = NULL;
             ds_CapLop.count--;
             cout << "complete !" << endl;
-            save_CapLopFile(ds_CapLop);
+            // save_CapLopFile(ds_CapLop);
             return 1;
         } else {
             CAPLOP * CapLopDel = ds_CapLop.dsCapLop[pos];
@@ -79,7 +79,7 @@ int xoaCapLop(DS_CAPLOP & ds_CapLop) {
             ds_CapLop.dsCapLop[ds_CapLop.count - 1] = NULL;
             ds_CapLop.count--;
             cout << "complete !" << endl;
-            save_CapLopFile(ds_CapLop);
+            // save_CapLopFile(ds_CapLop);
             CapLopDel = NULL;
             delete CapLopDel;
             return 1;
@@ -133,7 +133,7 @@ int hieuChinhCapLop(DS_CAPLOP & ds_CapLop) {
             CapLopDel = NULL;
             delete CapLopDel;
             cout << "complete !" << endl;
-            save_CapLopFile(ds_CapLop);
+            // save_CapLopFile(ds_CapLop);
         } else {
             if (check_lapMaCapLopLapEdit(ds_CapLop, pos, CapLop -> Ma) == -2) {
                 cout << "Danh sach trong !" << endl;
@@ -224,6 +224,7 @@ int load_CapLopFile(DS_CAPLOP & ds_CapLop) {
     }
     for (int i = 0; i < z; i++) {
         ds_CapLop.dsCapLop[i] = & num[i];
+        ds_CapLop.dsCapLop[i]->ds_Lop.pHead_Lop = NULL;
         ds_CapLop.count++;
     }
     fclose(fptr);

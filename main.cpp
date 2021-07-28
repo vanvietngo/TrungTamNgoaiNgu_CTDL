@@ -9,17 +9,22 @@ DS_CAPLOP ds_CapLop;
 
 
 int main() {
-	int choice;
-	
+int choice;
+	char b[20]="";
+	char xxx[20]="";
 		bool kt_choice = true;
 		system("cls");
 		load_CapLopFile(ds_CapLop);
-		 for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
-		 	char b[20]="";
-		 	strcat(b, ds_CapLop.dsCapLop[count0]->Ma);	
-		 	strcat(b, ".txt");	
-		 	openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, b);			
-		 }
+		// cout<<"dscl count = "<<ds_CapLop.count;
+		// cout<<"dslop = = "<<ds_CapLop.dsCapLop[0]->ds_Lop.pHead_Lop<<endl;
+		  for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
+		  	strcpy(b,xxx);
+		  	strcat(b, ds_CapLop.dsCapLop[count0]->Ma);	
+		  	strcat(b, ".txt");	
+//		  	cout<<"dscl count = "<<ds_CapLop.dsCapLop[count0]->Ma<<endl;
+		  	openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, b);	
+			  		
+		  }
 
 		while (kt_choice) {
 			cout << endl << endl << endl;
@@ -34,6 +39,7 @@ int main() {
 			cout << "| 5: Them lop                            |" << endl;
 			cout << "| 6: Xuat thong tin lop                  |" << endl;
 			cout << "| 7: Xoa lop                             |" << endl;
+			cout << "| 20: SAVE                               |" << endl;
 			//-----------------------------------
 			cout<<endl;
 			cout << "| Nhap lua chon:                       ";
@@ -90,9 +96,21 @@ int main() {
 					xoaLop(ds_CapLop);
 					break;
 				}
-						case 8:
+						case 20:
 				{
 //					xuatThongTinLop(ds_CapLop);
+					save_CapLopFile(ds_CapLop);
+
+					for(int i =0; i< ds_CapLop.count; i++)	{
+						if(ds_CapLop.dsCapLop[i]->ds_Lop.pHead_Lop != NULL)	{
+							// cout<<" dsl not null "<< i <<endl;
+							strcpy(b,xxx);
+							strcat(b, ds_CapLop.dsCapLop[i]->Ma);	
+							strcat(b, ".txt");
+							saveFileLop(ds_CapLop.dsCapLop[i]->ds_Lop, b);
+						}
+
+					}
 					break;
 				}	
 		}
