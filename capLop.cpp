@@ -37,6 +37,7 @@ int themCapLop(DS_CAPLOP & ds_CapLop) {
         // check lap Ma cap lop
         //True
         if (check_lap_MCL(ds_CapLop, CapLop) == 0) {
+            CapLop->ds_Lop.pHead_Lop = NULL;
             ds_CapLop.dsCapLop[ds_CapLop.count] = CapLop;
             ds_CapLop.count++;
             cout << "complete !" << endl;
@@ -129,6 +130,7 @@ int hieuChinhCapLop(DS_CAPLOP & ds_CapLop) {
         //    cout<<"check lap = "<<check_lapMaCapLopLapEdit(ds_CapLop, pos, CapLop -> Ma);
         if (check_lapMaCapLopLapEdit(ds_CapLop, pos, CapLop -> Ma) == -1) {
             CAPLOP * CapLopDel = ds_CapLop.dsCapLop[pos];
+            CapLop->ds_Lop = ds_CapLop.dsCapLop[pos]->ds_Lop;
             ds_CapLop.dsCapLop[pos] = CapLop;
             CapLopDel = NULL;
             delete CapLopDel;
