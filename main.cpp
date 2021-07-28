@@ -96,6 +96,21 @@ int choice;
 					xoaLop(ds_CapLop);
 					break;
 				}
+							case 8:
+				{
+					hieuChinhLop(ds_CapLop);
+					break;
+				}
+							case 9:
+				{
+					// xoaLop(ds_CapLop);
+					break;
+				}
+							case 10:
+				{
+					// xoaLop(ds_CapLop);
+					break;
+				}
 						case 20:
 				{
 //					xuatThongTinLop(ds_CapLop);
