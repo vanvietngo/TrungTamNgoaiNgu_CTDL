@@ -26,6 +26,6 @@ int check_LapMaLop(DS_LOP ds_Lop,char *maLop);
 int deleteNodeDSLK(DS_LOP & ds_Lop, int pos);
 int saveFileLop(DS_LOP ds_Lop, char* fileLop);
 
-
+int openFileLop(DS_LOP& ds_Lop, char* fileLop);
 
 #endif    // __lop_H__ 

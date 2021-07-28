@@ -3,7 +3,7 @@
 // main function
 int themLop(DS_CAPLOP & ds_CapLop) {
     cout << "... them lop ..." << endl;
-    // tim ma cap lop 
+    // tim ma cap lop
     char maCapLop[10];
     cout << "Nhap ma CAP LOP cua lop can them: ";
     fflush(stdin);
@@ -49,8 +49,11 @@ int themLop(DS_CAPLOP & ds_CapLop) {
                 cin.getline(lop -> Ma, 10);
                 addNodeDSLK(ds_CapLop.dsCapLop[posCL] -> ds_Lop, lop);
                 ds_CapLop.dsCapLop[posCL] -> ds_Lop.count++;
-
-                saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, ds_CapLop.dsCapLop[posCL]->Ma);
+//
+                char b[20]="";
+                strcat(b, ds_CapLop.dsCapLop[posCL]->Ma);
+                strcat(b, ".txt");
+                saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, b);
                 cout << "...complete..." << endl;
             } else {
                 cout << "Nhap ma phong: ";
@@ -65,7 +68,11 @@ int themLop(DS_CAPLOP & ds_CapLop) {
                     //true
                     addNodeDSLK(ds_CapLop.dsCapLop[posCL] -> ds_Lop, lop);
                     ds_CapLop.dsCapLop[posCL] -> ds_Lop.count++;
-                    saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, ds_CapLop.dsCapLop[posCL]->Ma);
+
+                    char b[20]="";
+                    strcat(b, ds_CapLop.dsCapLop[posCL]->Ma);
+                    strcat(b, ".txt");
+                    saveFileLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, b);
                     cout << "...complete..." << endl;
                     return 1;
                 }
@@ -84,12 +91,13 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
     cin.getline(maCapLop, 10);
     // check ma lop can them
     int posCL = timViTriXoaCapLop(ds_CapLop, maCapLop);
+    cout<<"Poscl = "<<posCL<<endl;
     if (posCL < 0) {
         // false
         cout << "Ma CAP LOP khong ton tai" << endl;
         return 0;
     } else {
-        // cout<<"pos = "<<posCL;
+        cout<<"count ds lop = "<<ds_CapLop.dsCapLop[posCL] -> ds_Lop.count<<endl;
         if (ds_CapLop.dsCapLop[posCL] -> ds_Lop.count == 0) {
             cout << "ds lop null" << endl;
             return 0;
@@ -97,23 +105,23 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
             //			cout<<"ds lop not null"<<endl;
             // xuat thong tin cac lop la dslk
             LOP * p = ds_CapLop.dsCapLop[posCL] -> ds_Lop.pHead_Lop;
-			    cout << "Danh sach cap lop: " << endl;
-    cout << setw(5) << left << "Stt";
-    cout << setw(15) << left << "Ma";
-    cout << setw(15) << left << "Phong";
-    cout << setw(10) << left << "Status"<<endl;
-    cout << setfill('.');
-    cout << setw(50) << "" << endl;
-    cout << setfill(' ');
-	int k = 0;
+            cout << "Danh sach cap lop: " << endl;
+            cout << setw(5) << left << "Stt";
+            cout << setw(15) << left << "Ma";
+            cout << setw(15) << left << "Phong";
+            cout << setw(10) << left << "Status"<<endl;
+            cout << setfill('.');
+            cout << setw(50) << "" << endl;
+            cout << setfill(' ');
+            int k = 0;
             while (p != NULL) {
-				  cout << setw(5) << left << k;
+                cout << setw(5) << left << k;
 
                 cout << setw(15) << left << p -> Ma ;
                 cout << setw(15) << left  << p -> Phong ;
                 cout <<setw(10) << left  << p -> Status << endl;
                 p = p -> pNext;
-				k++;
+                k++;
             }
         }
     }
@@ -129,37 +137,37 @@ int xoaLop(DS_CAPLOP & ds_CapLop) {
     cin.getline(maCapLop, 10);
 
     // check ma cap lop va tim vi tri
-	int PosCL = timViTriXoaCapLop(ds_CapLop,maCapLop);	
-	if(PosCL<0){
-		cout<<"Ma CAP LOP khong ton tai!"<<endl;
-		return 0;
-	}
-	// nhap ma Lop can xoa
-	char maLop[10];
-	cout<<"Nhap MA LOP can xoa: ";
-	fflush(stdin);
-	cin.getline(maLop,10);
+    int PosCL = timViTriXoaCapLop(ds_CapLop,maCapLop);
+    if(PosCL<0) {
+        cout<<"Ma CAP LOP khong ton tai!"<<endl;
+        return 0;
+    }
+    // nhap ma Lop can xoa
+    char maLop[10];
+    cout<<"Nhap MA LOP can xoa: ";
+    fflush(stdin);
+    cin.getline(maLop,10);
 
     // check ma lop  va tim vi tri trong dslk
-	int posLop = check_LapMaLop(ds_CapLop.dsCapLop[PosCL]->ds_Lop, maLop);
-	if(posLop < 0){
-		cout<<"ma LOP khong ton tai !"<<endl;
-		return 0;
-	}
+    int posLop = check_LapMaLop(ds_CapLop.dsCapLop[PosCL]->ds_Lop, maLop);
+    if(posLop < 0) {
+        cout<<"ma LOP khong ton tai !"<<endl;
+        return 0;
+    }
 
     // xoa lop
-	// cout<<"Ma lop co ton tai"<<endl;
-	deleteNodeDSLK(ds_CapLop.dsCapLop[PosCL]->ds_Lop, posLop);
+    // cout<<"Ma lop co ton tai"<<endl;
+    deleteNodeDSLK(ds_CapLop.dsCapLop[PosCL]->ds_Lop, posLop);
     saveFileLop(ds_CapLop.dsCapLop[PosCL] -> ds_Lop, ds_CapLop.dsCapLop[PosCL]->Ma);
-	cout<<" ... complete ..."<<endl;
-	return 1;
+    cout<<" ... complete ..."<<endl;
+    return 1;
 }
 
 // additional
 int check_LapMaLop(DS_LOP ds_Lop, char * maLop) {
     if (ds_Lop.count == 0) {
         // cout << "count = 0 ko lap " << endl;
-		// ds lop null
+        // ds lop null
         return -2; // ko lap
     } else {
         LOP * p = ds_Lop.pHead_Lop;
@@ -191,51 +199,51 @@ void addNodeDSLK(DS_LOP & ds_Lop, LOP * lop) {
 }
 
 int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
-	// check truong hop xoa
-	LOP* p;
-	// xoa dau
-	if( pos == 0 ){
-		p = ds_Lop.pHead_Lop;
-		ds_Lop.pHead_Lop = ds_Lop.pHead_Lop->pNext;
-		p=NULL;
-		delete p;
-		ds_Lop.count--;
-		return 1;
-	}
-	//
-	// xoa cuoi
-	if(pos == ds_Lop.count - 1){
-		p = ds_Lop.pHead_Lop;
-		while(p->pNext->pNext != NULL){
-			p=p->pNext;
-		}
-		LOP* pdel = p->pNext;
-		p->pNext = NULL;
-		delete pdel;
-		ds_Lop.count--;
-		return 1;
-	}
-	// xoa node bat ki o giua
-	int mid = 1;
-	p = ds_Lop.pHead_Lop;
-	while(p->pNext->pNext != NULL && mid != pos){
-		p = p->pNext;
-		mid++;
-	}
-	// xoa
-	LOP* pdel = p->pNext;
-	p->pNext = p->pNext->pNext;
-	delete pdel;
-	ds_Lop.count --;
-	return 1;
+    // check truong hop xoa
+    LOP* p;
+    // xoa dau
+    if( pos == 0 ) {
+        p = ds_Lop.pHead_Lop;
+        ds_Lop.pHead_Lop = ds_Lop.pHead_Lop->pNext;
+        p=NULL;
+        delete p;
+        ds_Lop.count--;
+        return 1;
+    }
+    //
+    // xoa cuoi
+    if(pos == ds_Lop.count - 1) {
+        p = ds_Lop.pHead_Lop;
+        while(p->pNext->pNext != NULL) {
+            p=p->pNext;
+        }
+        LOP* pdel = p->pNext;
+        p->pNext = NULL;
+        delete pdel;
+        ds_Lop.count--;
+        return 1;
+    }
+    // xoa node bat ki o giua
+    int mid = 1;
+    p = ds_Lop.pHead_Lop;
+    while(p->pNext->pNext != NULL && mid != pos) {
+        p = p->pNext;
+        mid++;
+    }
+    // xoa
+    LOP* pdel = p->pNext;
+    p->pNext = p->pNext->pNext;
+    delete pdel;
+    ds_Lop.count --;
+    return 1;
 }
 
 int saveFileLop(DS_LOP ds_Lop, char* fileLop) {
     FILE * f;
     f = fopen(fileLop, "wb");
     if (f == NULL) {
-        cout << "error open file";
-        exit(1);
+        cout << "";
+//        exit(1);
     } else {
         LOP* p = ds_Lop.pHead_Lop;
         while(p!= NULL) {
@@ -249,3 +257,36 @@ int saveFileLop(DS_LOP ds_Lop, char* fileLop) {
 
 
 //
+int openFileLop(DS_LOP& ds_Lop, char* fileLop) {
+    FILE * f;
+    f = fopen(fileLop, "rb");
+    if (f == NULL) {
+        cout << "";
+//        exit(1);
+    } else {
+        LOP lop;
+        ds_Lop.count = 0;
+        while (fread( & lop, sizeof(LOP), 1, f)) {
+            LOP* l = new LOP;
+            *l = lop;
+            l->pNext = NULL;
+
+             if(ds_Lop.pHead_Lop == NULL) {
+             	ds_Lop.pHead_Lop = l;
+             	ds_Lop.count++;
+             }else {
+                 LOP*  p;
+                 p = ds_Lop.pHead_Lop;
+                 while(p->pNext != NULL) {
+                     p = p->pNext ;
+                 }
+                p->pNext = l;
+             	ds_Lop.count++;
+             }
+        }
+        fclose(f);
+    }
+    return 0;
+}
+
+

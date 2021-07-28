@@ -14,6 +14,13 @@ int main() {
 		bool kt_choice = true;
 		system("cls");
 		load_CapLopFile(ds_CapLop);
+		 for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
+		 	char b[20]="";
+		 	strcat(b, ds_CapLop.dsCapLop[count0]->Ma);	
+		 	strcat(b, ".txt");	
+		 	openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, b);			
+		 }
+
 		while (kt_choice) {
 			cout << endl << endl << endl;
 			cout << "------ ------ ------ ------ ------ -------" << endl;
