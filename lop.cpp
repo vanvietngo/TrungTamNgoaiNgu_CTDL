@@ -402,6 +402,7 @@ int hieuChinhLop(DS_CAPLOP &ds_CapLop)  {
                 while(p->pNext->pNext != NULL && k != posLop) {
 
                     p = p->pNext;
+                    k++;
                 }
                 LOP* del ;
                 del = p->pNext;
