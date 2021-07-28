@@ -39,6 +39,7 @@ int choice;
 			cout << "| 5: Them lop                            |" << endl;
 			cout << "| 6: Xuat thong tin lop                  |" << endl;
 			cout << "| 7: Xoa lop                             |" << endl;
+			cout << "| 8: Edit lop                            |" << endl;
 			cout << "| 20: SAVE                               |" << endl;
 			//-----------------------------------
 			cout<<endl;
