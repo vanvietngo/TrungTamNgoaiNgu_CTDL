@@ -153,9 +153,9 @@ int hieuChinhCapLop(DS_CAPLOP & ds_CapLop) {
 
 void xuatCapLop(DS_CAPLOP ds_CapLop) {
     //	cout << setw(5) << left << 1;
-    cout << "Danh sach cap lop: " << endl;
-    cout << setw(5) << left << "Stt";
-    cout << setw(10) << left << "Ma";
+    cout << "                           Danh sach cap lop: " << endl<<endl;
+    cout <<"     "<< setw(5) << left << "Stt";
+    cout << setw(13) << left << "Ma";
     cout << setw(25) << left << "Ten";
     cout << setw(10) << left << "So tiet";
     cout << setw(25) << left << "Hoc Phi" << endl;
@@ -164,8 +164,8 @@ void xuatCapLop(DS_CAPLOP ds_CapLop) {
     cout << setfill(' ');
 
     for (int i = 0; i < ds_CapLop.count; i++) {
-        cout << setw(5) << left << i;
-        cout << setw(10) << left << ds_CapLop.dsCapLop[i] -> Ma;
+        cout <<"     "<< setw(5) << left << i;
+        cout << setw(13) << left << ds_CapLop.dsCapLop[i] -> Ma;
         cout << setw(25) << left << ds_CapLop.dsCapLop[i] -> Ten;
         cout << setw(10) << left << ds_CapLop.dsCapLop[i] -> SoTiet;
         cout << setw(25) << left << ds_CapLop.dsCapLop[i] -> HocPhi << endl;

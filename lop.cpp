@@ -91,13 +91,13 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
     cin.getline(maCapLop, 10);
     // check ma lop can them
     int posCL = timViTriXoaCapLop(ds_CapLop, maCapLop);
-    cout<<"Poscl = "<<posCL<<endl;
+    // cout<<"Poscl = "<<posCL<<endl;
     if (posCL < 0) {
         // false
         cout << "Ma CAP LOP khong ton tai" << endl;
         return 0;
     } else {
-        cout<<"count ds lop = "<<ds_CapLop.dsCapLop[posCL] -> ds_Lop.count<<endl;
+        // cout<<"count ds lop = "<<ds_CapLop.dsCapLop[posCL] -> ds_Lop.count<<endl;
         if (ds_CapLop.dsCapLop[posCL] -> ds_Lop.count == 0) {
             cout << "ds lop null" << endl;
             return 0;
@@ -105,8 +105,9 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
             //			cout<<"ds lop not null"<<endl;
             // xuat thong tin cac lop la dslk
             LOP * p = ds_CapLop.dsCapLop[posCL] -> ds_Lop.pHead_Lop;
-            cout << "Danh sach cap lop: " << endl;
-            cout << setw(5) << left << "Stt";
+            cout<<endl;
+            cout << "               Danh sach cap lop: " << endl<<endl;
+            cout <<"     "<< setw(5) << left << "Stt";
             cout << setw(15) << left << "Ma";
             cout << setw(15) << left << "Phong";
             cout << setw(10) << left << "Status"<<endl;
@@ -115,7 +116,7 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
             cout << setfill(' ');
             int k = 0;
             while (p != NULL) {
-                cout << setw(5) << left << k;
+                cout <<"     " << setw(5) << left << k;
 
                 cout << setw(15) << left << p -> Ma ;
                 cout << setw(15) << left  << p -> Phong ;
