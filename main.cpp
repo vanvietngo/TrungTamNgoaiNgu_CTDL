@@ -116,7 +116,6 @@ int main() {
         }
         case 20:
         {
-//					xuatThongTinLop(ds_CapLop);
             save_CapLopFile(ds_CapLop, urlCapLop);
 
             for(int i =0; i< ds_CapLop.count; i++)	{
