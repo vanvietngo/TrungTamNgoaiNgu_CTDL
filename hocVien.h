@@ -30,6 +30,9 @@ void InOrder(HOCVIEN* root);
 HOCVIEN* searchHocVien(HOCVIEN* root, int maHV);
 int Check_lap_MHV(HOCVIEN * root, int maHV);
 
+void writeFile(HOCVIEN * root, FILE* f);
+int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien);
 
+// int openFileHocVien(DS_LOP& ds_Lop, char* fileLop);
 
 #endif    // __hocVien_H__ 

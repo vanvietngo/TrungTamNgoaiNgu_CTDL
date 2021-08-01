@@ -252,3 +252,25 @@ HOCVIEN* searchHocVien(HOCVIEN * root, int maHV) {
     }
     // return 0;
 }
+
+void writeFile(HOCVIEN * root, FILE* f) {
+    if (root != NULL) {
+        InOrder(root -> pLeft);
+        fwrite(root, sizeof(HOCVIEN), 1, f);
+
+        InOrder(root -> pRight);
+    }
+}
+
+int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien)   {
+    FILE * f;
+    f = fopen(fileHocVien, "wb");
+    if (f == NULL) {
+        cout << "";
+    //        exit(1);
+    } else {
+        HOCVIEN* p = ds_HocVien.root;
+        writeFile(p, f);
+        fclose(f);
+    }
+}

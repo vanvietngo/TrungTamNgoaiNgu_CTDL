@@ -435,7 +435,9 @@ int openFileLop(DS_LOP& ds_Lop, char* fileLop) {
         ds_Lop.count = 0;
         while (fread( & lop, sizeof(LOP), 1, f)) {
             LOP* l = new LOP;
-            *l = lop;
+             *l = lop;           
+            l->ds_HocVien.count =0;
+            l->ds_HocVien.root = NULL;
             l->pNext = NULL;
 
             if(ds_Lop.pHead_Lop == NULL) {

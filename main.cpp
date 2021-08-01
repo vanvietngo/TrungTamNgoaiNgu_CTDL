@@ -14,16 +14,18 @@ int main() {
     int choice;
     char xxx[100]="";
     char urlCapLop[100] = "C:\\Users\\Node Js\\Documents\\Duy\\DB\\capLop.txt";
-    char urlLop[100] = "C:\\Users\\Node Js\\Documents\\Duy\\DB\\";
+    char urlDB[100] = "C:\\Users\\Node Js\\Documents\\Duy\\DB\\";
+    // char urlDBx[100]="";
     char fileLop[100]="";
-    char urlLopx[100]="";
+    char fileHocVien[100]="";
+
     bool kt_choice = true;
     system("cls");
 
     load_CapLopFile(ds_CapLop, urlCapLop);
     for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
         strcpy(fileLop,xxx);
-        strcat(fileLop,urlLop);
+        strcat(fileLop,urlDB);
         strcat(fileLop, ds_CapLop.dsCapLop[count0]->Ma);
         strcat(fileLop, ".txt");
         openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, fileLop);
@@ -70,17 +72,6 @@ int main() {
         }
         case 1:
         {
-//            system("cls");
-    
-            // load_CapLopFile(ds_CapLop, urlCapLop);
-            // for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
-            //     strcpy(fileLop,xxx);
-            //     strcat(fileLop,urlLop);
-            //     strcat(fileLop, ds_CapLop.dsCapLop[count0]->Ma);
-            //     strcat(fileLop, ".txt");
-            //     openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, fileLop);
-
-            // }
             themCapLop(ds_CapLop);
             break;
         }
@@ -98,7 +89,7 @@ int main() {
         }
         case 4:
         {
-            // system("cls");
+// system("cls");
             hieuChinhCapLop(ds_CapLop);
             break;
         }
@@ -162,13 +153,29 @@ int main() {
         {
             save_CapLopFile(ds_CapLop, urlCapLop);
 
+            // save file Lop
             for(int i =0; i< ds_CapLop.count; i++)	{
                 if(ds_CapLop.dsCapLop[i]->ds_Lop.pHead_Lop != NULL)	{
-                    strcpy(fileLop,xxx);
-                    strcat(fileLop,urlLop);
+                    strcpy(fileLop, xxx);
+                    strcat(fileLop, urlDB);
                     strcat(fileLop, ds_CapLop.dsCapLop[i]->Ma);
                     strcat(fileLop, ".txt");
                     saveFileLop(ds_CapLop.dsCapLop[i]->ds_Lop, fileLop);
+
+                    // save file Hoc Vien
+                    LOP* lop = ds_CapLop.dsCapLop[i]->ds_Lop.pHead_Lop;
+                    while(lop != NULL)  {
+                        if(lop->ds_HocVien.root != NULL)    {
+                            // tao file HV
+                            strcpy(fileHocVien, xxx);
+                            strcat(fileHocVien,urlDB);
+                            strcat(fileHocVien, lop->Ma);
+                            strcat(fileHocVien, ".txt");  
+                            saveFileHocVien(lop->ds_HocVien, fileHocVien);
+                        }
+                        lop = lop->pNext;
+                    }
+
                 }
             }
             break;
