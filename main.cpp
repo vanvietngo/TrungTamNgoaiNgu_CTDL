@@ -19,8 +19,8 @@ int main() {
     char urlLopx[100]="";
     bool kt_choice = true;
     system("cls");
-    load_CapLopFile(ds_CapLop, urlCapLop);
 
+    load_CapLopFile(ds_CapLop, urlCapLop);
     for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
         strcpy(fileLop,xxx);
         strcat(fileLop,urlLop);
@@ -45,7 +45,9 @@ int main() {
         cout << "| 7: Xoa lop                             |" << endl;
         cout << "| 8: Edit lop                            |" << endl;
         cout << "| 9: Them hoc vien                       |" << endl;
+        cout << "| 10: Xuat thong hoc vien                |" << endl;
         cout << "| 20: SAVE                               |" << endl;
+
         //-----------------------------------
         cout<<endl;
         cout << "| Nhap lua chon:                       ";
@@ -67,21 +69,45 @@ int main() {
         }
         case 1:
         {
+            system("cls");
+    
+            // load_CapLopFile(ds_CapLop, urlCapLop);
+            // for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
+            //     strcpy(fileLop,xxx);
+            //     strcat(fileLop,urlLop);
+            //     strcat(fileLop, ds_CapLop.dsCapLop[count0]->Ma);
+            //     strcat(fileLop, ".txt");
+            //     openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, fileLop);
+
+            // }
             themCapLop(ds_CapLop);
             break;
         }
         case 2:
         {
+//            system("cls");
+//            DS_CAPLOP ds_CapLop;
+//            load_CapLopFile(ds_CapLop, urlCapLop);
+//            for(int count1 =0; count1 < ds_CapLop.count; count1++)	{
+//                strcpy(fileLop,xxx);
+//                strcat(fileLop,urlLop);
+//                strcat(fileLop, ds_CapLop.dsCapLop[count1]->Ma);
+//                strcat(fileLop, ".txt");
+//                openFileLop(ds_CapLop.dsCapLop[count1]->ds_Lop, fileLop);
+//
+//            }
             xuatCapLop(ds_CapLop);
             break;
         }
         case 3:
         {
+            // system("cls");
             xoaCapLop(ds_CapLop);
             break;
         }
         case 4:
         {
+            // system("cls");
             hieuChinhCapLop(ds_CapLop);
             break;
         }
@@ -89,7 +115,6 @@ int main() {
         case 5:
         {
             themLop(ds_CapLop);
-//					save_CapLopFile(ds_CapLop);
             break;
         }
         case 6:
@@ -119,7 +144,7 @@ int main() {
         }
         case 11:
         {
-            // xoaLop(ds_CapLop);
+            editHocVien(ds_CapLop);
             break;
         }
         case 12:

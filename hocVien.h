@@ -19,6 +19,8 @@ trỏ đến danh sách các điểm (nghe, nói, đọc, viết) của học vi
 
 int themHocVien(DS_CAPLOP & ds_CapLop);
 int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop);
+int editHocVien(DS_CAPLOP &ds_CapLop);
+
 
 // additional function
 

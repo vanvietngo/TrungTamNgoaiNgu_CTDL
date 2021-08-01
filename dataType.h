@@ -5,7 +5,8 @@
 #include<iostream>
 #include<stdio.h>
 #include<string> 
-
+// #include<conio.h>
+// #include<cstdlib>
 //#include"lop.h"
 #include <iomanip>
 #include <fstream> 
