@@ -238,8 +238,8 @@ int xoaHocVien(DS_CAPLOP & ds_CapLop)   {
         return 0;
     }
     // xoa - node cnp
-    // xoaNodeCNP(lop->ds_HocVien.root, maHV);
-    // lop->ds_HocVien.count--;
+     xoaNodeCNP(lop->ds_HocVien.root, maHV);
+     lop->ds_HocVien.count--;
     cout<<"done"<<endl;
 
 }
@@ -359,16 +359,16 @@ int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien)   {
 // open file
 
 int openFileHocVien(DS_HOCVIEN &ds_HocVien, char* fileHocVien)  {
-    // cout<<"file = "<<fileHocVien<<endl;
-    FILE * f;
-    f = fopen(fileHocVien, "rb");
-    if (f == NULL) {
+    cout<<"file = "<<fileHocVien<<endl;
+    FILE * fileHV;
+    fileHV = fopen(fileHocVien, "rb");
+    if (fileHV == NULL) {
         cout << "";
         //        exit(1);
     } else {
         HOCVIEN hocvien ;
         ds_HocVien.count = 0;
-        while (fread( & hocvien, sizeof(HOCVIEN), 1, f)) {
+        while (fread( & hocvien, sizeof(HOCVIEN), 1, fileHV)) {
             HOCVIEN* hv = new HOCVIEN;
             *hv = hocvien;
             hv->pLeft = NULL;
@@ -377,6 +377,6 @@ int openFileHocVien(DS_HOCVIEN &ds_HocVien, char* fileHocVien)  {
                 ds_HocVien.count ++;
             }
         }
-        fclose(f);
+        fclose(fileHV);
     return 0;    
 }

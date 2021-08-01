@@ -23,6 +23,9 @@ int main() {
     system("cls");
 
     load_CapLopFile(ds_CapLop, urlCapLop);
+    cout<<"lop6 = "<<ds_CapLop.dsCapLop[6]->ds_Lop.pHead_Lop;
+        cout<<"lop7 = "<<ds_CapLop.dsCapLop[7]->ds_Lop.pHead_Lop;
+            cout<<"lop8 = "<<ds_CapLop.dsCapLop[8]->ds_Lop.pHead_Lop;
     for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
         strcpy(fileLop,xxx);
         strcat(fileLop,urlDB);
@@ -30,9 +33,28 @@ int main() {
         strcat(fileLop, ".txt");
         openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, fileLop);
 
-        // open file Hoc Vien
-        LOP* lop = ds_CapLop.dsCapLop[count0]->ds_Lop.pHead_Lop;
+        // // open file Hoc Vien
+        // LOP* lop;
+		// lop = ds_CapLop.dsCapLop[count0]->ds_Lop.pHead_Lop;
+        // while(lop != NULL)  {
+        //     cout<<"InWhile : lop->Ma not null = "<<count0<<"  "<<lop->Ma<<endl;
+        //     // if(lop->ds_HocVien.root != NULL)    {
+        //         // tao file HV
+        //         strcpy(fileHocVien, xxx);
+        //         strcat(fileHocVien,urlDB);
+        //         strcat(fileHocVien, lop->Ma);
+        //         strcat(fileHocVien, ".txt");  
+        //         openFileHocVien(lop->ds_HocVien, fileHocVien);
+        //     // }
+        //     lop = lop->pNext;
+        // }
+    }
+    for(int countLOP =0; countLOP < ds_CapLop.count; countLOP++)	{
+                // // open file Hoc Vien
+        LOP* lop;
+		lop = ds_CapLop.dsCapLop[countLOP]->ds_Lop.pHead_Lop;
         while(lop != NULL)  {
+            cout<<"InWhile : lop->Ma not null = "<<countLOP<<"  "<<lop->Ma<<endl;
             // if(lop->ds_HocVien.root != NULL)    {
                 // tao file HV
                 strcpy(fileHocVien, xxx);

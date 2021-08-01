@@ -53,7 +53,7 @@ struct _LOP{
 	int Status;
 	char Phong[10];
 	DS_HOCVIEN ds_HocVien;
-	_LOP* pNext;
+	_LOP* pNext = NULL;
 };      
 typedef struct _LOP LOP;
 
