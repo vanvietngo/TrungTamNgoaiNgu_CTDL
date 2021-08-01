@@ -30,6 +30,19 @@ int main() {
         strcat(fileLop, ".txt");
         openFileLop(ds_CapLop.dsCapLop[count0]->ds_Lop, fileLop);
 
+        // open file Hoc Vien
+        LOP* lop = ds_CapLop.dsCapLop[count0]->ds_Lop.pHead_Lop;
+        while(lop != NULL)  {
+            // if(lop->ds_HocVien.root != NULL)    {
+                // tao file HV
+                strcpy(fileHocVien, xxx);
+                strcat(fileHocVien,urlDB);
+                strcat(fileHocVien, lop->Ma);
+                strcat(fileHocVien, ".txt");  
+                openFileHocVien(lop->ds_HocVien, fileHocVien);
+            // }
+            lop = lop->pNext;
+        }
     }
 
     while (kt_choice) {

@@ -274,3 +274,26 @@ int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien)   {
         fclose(f);
     }
 }
+
+// open file
+
+int openFileHocVien(DS_HOCVIEN &ds_HocVien, char* fileHocVien)  {
+    // cout<<"file = "<<fileHocVien<<endl;
+    FILE * f;
+    f = fopen(fileHocVien, "rb");
+    if (f == NULL) {
+        cout << "";
+        //        exit(1);
+    } else {
+        HOCVIEN hocvien ;
+        ds_HocVien.count = 0;
+        while (fread( & hocvien, sizeof(HOCVIEN), 1, f)) {
+            HOCVIEN* hv = new HOCVIEN;
+            *hv = hocvien;
+            addNodeHocVien(ds_HocVien.root, hv);
+                ds_HocVien.count ++;
+            }
+        }
+        fclose(f);
+    return 0;    
+}

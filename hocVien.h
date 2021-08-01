@@ -33,6 +33,6 @@ int Check_lap_MHV(HOCVIEN * root, int maHV);
 void writeFile(HOCVIEN * root, FILE* f);
 int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien);
 
-// int openFileHocVien(DS_LOP& ds_Lop, char* fileLop);
+int openFileHocVien(DS_HOCVIEN &ds_HocVien, char* fileHocVien);
 
 #endif    // __hocVien_H__ 
