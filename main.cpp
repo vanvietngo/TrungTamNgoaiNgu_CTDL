@@ -62,6 +62,8 @@ int main() {
         cout << "| 9: Them hoc vien                       |" << endl;
         cout << "| 10: Xuat thong tin hoc vien            |" << endl;
         cout << "| 11: Hieu chinh thong tin hoc vien      |" << endl;
+        cout << "| 12: Xoa thong tin hoc vien             |" << endl;
+        
         cout << "| 20: SAVE                               |" << endl;
 
         //-----------------------------------
@@ -144,7 +146,7 @@ int main() {
         }
         case 12:
         {
-            // xoaLop(ds_CapLop);
+            xoaHocVien(ds_CapLop);
             break;
         }
         case 13:

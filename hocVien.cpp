@@ -114,7 +114,7 @@ int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop) {
         cout << "Hoc vien trong ." << endl;
         return 0;
     } else {
-        cout << "                           Danh sach cap lop: " << endl << endl;
+        cout << "                           Danh sach hoc vien: " << endl << endl;
         cout << "     " << setw(15) << left << "Ma";
         cout << setw(25) << left << "Ho";
         cout << setw(25) << left << "Ten";
@@ -163,6 +163,7 @@ int editHocVien(DS_CAPLOP &ds_CapLop)   {
         cout<<"Ma hoc vien khong ton tai"<<endl;
         return 0;
     }
+    // ma HV  hop le
     HOCVIEN* HocVien;
     HocVien = searchHocVien(lop->ds_HocVien.root, maHV);
     // cout<<"maHV = "<<HocVien->Ma<<endl;
@@ -196,10 +197,53 @@ int editHocVien(DS_CAPLOP &ds_CapLop)   {
     } while (check);
 cout<<"done"<<endl;
 return 0;
+}
 
 
+int xoaHocVien(DS_CAPLOP & ds_CapLop)   {
+    cout << "... Xoa HOC VIEN ..." << endl;
+    // tim ma cap lop
+    char maCapLop[10];
+    cout << "Nhap ma CAP LOP: ";
+    fflush(stdin);
+    cin.getline(maCapLop, 10);
+    // check ma lop can them
+    //	cout<<"ma cl = "<<maCapLop;
+    int posCL = timViTriXoaCapLop(ds_CapLop, maCapLop);
+    //	cout<<"pos = "<<posCL;
+    if (posCL < 0) {
+        // false
+        cout << "Ma CAP LOP khong ton tai" << endl;
+        return 0;
+    }
+    // tim lop cua hoc vien
+    cout << " Nhap ma LOP cua hoc vien can xoa: ";
+    char maLop[10];
+    fflush(stdin);
+    cin.getline(maLop, 10);
+    // check valid maLop
+    int posL = check_LapMaLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, maLop);
+    if (posL < 0) {
+        cout << " Ma LOP khong ton tai" << endl;
+        return 0;
+    }
+    LOP * lop;
+    lop = searchLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, maLop);
+    // check ma hoc vien
+    int maHV;
+    cout<<"Nhap ma HOC VIEN can xoa: ";
+    cin >> maHV;
+    if(Check_lap_MHV(lop->ds_HocVien.root, maHV) == 0)  {
+        cout<<"Ma hoc vien khong ton tai"<<endl;
+        return 0;
+    }
+    // xoa - node cnp
+    // xoaNodeCNP(lop->ds_HocVien.root, maHV);
+    // lop->ds_HocVien.count--;
+    cout<<"done"<<endl;
 
 }
+
 
 //additional function
 
@@ -214,7 +258,7 @@ int addNodeHocVien(HOCVIEN * & root, HOCVIEN * HocVien) {
     } else if (root -> Ma < HocVien -> Ma) {
         addNodeHocVien(root -> pRight, HocVien);
     }
-    return 0;
+    // return 0;
 }
 
 int Check_lap_MHV(HOCVIEN * root, int maHV) {
@@ -253,12 +297,49 @@ HOCVIEN* searchHocVien(HOCVIEN * root, int maHV) {
     // return 0;
 }
 
+
+int xoaNodeCNP(HOCVIEN * & root, int maHV)    {
+    if (root -> Ma == maHV) {
+        // node xoa la node la
+        if(root->pLeft == NULL && root->pRight == NULL) {
+            delete root;
+            return 1;
+        }  
+        else if(root->pLeft != NULL && root->pRight == NULL)   {
+            HOCVIEN* del;
+            del = root;
+            root = root->pLeft;
+            delete del;
+            return 1;
+        }
+        else if(root->pLeft == NULL && root->pRight != NULL)    {
+            HOCVIEN* del;
+            del = root;
+            root = root->pRight;
+            delete del;
+            return 1;
+        }else {
+            // node have 2 child
+
+            return 1;
+        }
+        return 1; // lap
+    } else if (root -> Ma > maHV) {
+        xoaNodeCNP(root -> pLeft, maHV);
+    } else if (root -> Ma < maHV){
+        xoaNodeCNP(root -> pRight, maHV);
+    }
+}
+
+
+
+
 void writeFile(HOCVIEN * root, FILE* f) {
     if (root != NULL) {
-        InOrder(root -> pLeft);
+        writeFile(root -> pLeft, f);
         fwrite(root, sizeof(HOCVIEN), 1, f);
 
-        InOrder(root -> pRight);
+        writeFile(root -> pRight, f);
     }
 }
 
@@ -290,6 +371,8 @@ int openFileHocVien(DS_HOCVIEN &ds_HocVien, char* fileHocVien)  {
         while (fread( & hocvien, sizeof(HOCVIEN), 1, f)) {
             HOCVIEN* hv = new HOCVIEN;
             *hv = hocvien;
+            hv->pLeft = NULL;
+            hv->pRight = NULL;
             addNodeHocVien(ds_HocVien.root, hv);
                 ds_HocVien.count ++;
             }
