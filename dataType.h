@@ -29,8 +29,8 @@ typedef struct _DS_DIEM DS_DIEM;
 
 struct _HOCVIEN{
 	int Ma;	//random
-	char Ho[10];
-	char Ten[10];
+	char Ho[20];
+	char Ten[20];
 	char Phai[5];
 	struct _HOCVIEN* pLeft = NULL;
 	struct _HOCVIEN* pRight = NULL;

@@ -19,7 +19,7 @@ int themHocVien(DS_CAPLOP & ds_CapLop) {
         return 0;
     }
     // tim lop cua hoc vien
-    cout << " Nhap ma LOP cua hoc vien can them: ";
+    cout << " Nhap ma LOP cua hoc vien: ";
     char maLop[10];
     fflush(stdin);
     cin.getline(maLop, 10);
@@ -36,10 +36,10 @@ int themHocVien(DS_CAPLOP & ds_CapLop) {
     // char phai[10];
     cout << "Nhap Ho HOC VIEN: ";
     fflush(stdin);
-    cin.getline(HocVien -> Ho, 10);
+    cin.getline(HocVien -> Ho, 20);
     cout << "Nhap Ten HOC VIEN: ";
     fflush(stdin);
-    cin.getline(HocVien -> Ten, 10);
+    cin.getline(HocVien -> Ten, 20);
     bool check = true;
     char nam[] = "Nam";
     char nu[] = "Nu";
@@ -98,7 +98,7 @@ int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop) {
         return 0;
     }
     // tim lop cua hoc vien
-    cout << " Nhap ma LOP cua hoc vien can them: ";
+    cout << " Nhap ma LOP cua hoc vien: ";
     char maLop[10];
     fflush(stdin);
     cin.getline(maLop, 10);
@@ -116,11 +116,11 @@ int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop) {
     } else {
         cout << "                           Danh sach cap lop: " << endl << endl;
         cout << "     " << setw(15) << left << "Ma";
-        cout << setw(15) << left << "Ho";
-        cout << setw(15) << left << "Ten";
+        cout << setw(25) << left << "Ho";
+        cout << setw(25) << left << "Ten";
         cout << setw(15) << left << "Phai" << endl;
         cout << setfill('.');
-        cout << setw(65) << "" << endl;
+        cout << setw(85) << "" << endl;
         cout << setfill(' ');
         InOrder(lop -> ds_HocVien.root);
     }
@@ -170,11 +170,11 @@ int editHocVien(DS_CAPLOP &ds_CapLop)   {
     cout<<"nhap ho new: ";
             fflush(stdin);
 
-    cin.getline(HocVien->Ho, 10);
+    cin.getline(HocVien->Ho, 20);
     cout <<"nhap ten new: ";
             fflush(stdin);
 
-    cin.getline(HocVien->Ten, 10);
+    cin.getline(HocVien->Ten, 20);
     bool check = true;
     char nam[] = "Nam";
     char nu[] = "Nu";
@@ -225,7 +225,7 @@ int Check_lap_MHV(HOCVIEN * root, int maHV) {
         return 1; // lap
     } else if (root -> Ma > maHV) {
         Check_lap_MHV(root -> pLeft, maHV);
-    } else {
+    } else if (root -> Ma < maHV){
         Check_lap_MHV(root -> pRight, maHV);
     }
 }
@@ -234,8 +234,8 @@ void InOrder(HOCVIEN * root) {
     if (root != NULL) {
         InOrder(root -> pLeft);
         cout << "     " << setw(15) << left << root -> Ma;
-        cout << setw(15) << left << root -> Ho;
-        cout << setw(15) << left << root -> Ten;
+        cout << setw(25) << left << root -> Ho;
+        cout << setw(25) << left << root -> Ten;
         cout << setw(15) << left << root -> Phai << endl;
         InOrder(root -> pRight);
     }
@@ -246,9 +246,9 @@ HOCVIEN* searchHocVien(HOCVIEN * root, int maHV) {
     if (root -> Ma == maHV) {
         return root; // lap
     } else if (root -> Ma > maHV) {
-        Check_lap_MHV(root -> pLeft, maHV);
+        searchHocVien(root -> pLeft, maHV);
     } else {
-        Check_lap_MHV(root -> pRight, maHV);
+        searchHocVien(root -> pRight, maHV);
     }
     // return 0;
 }
