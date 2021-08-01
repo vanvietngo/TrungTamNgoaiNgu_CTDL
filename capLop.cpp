@@ -213,6 +213,19 @@ int check_lapMaCapLopLapEdit(DS_CAPLOP ds_CapLop, int pos, char * MaEdit) {
     return -1; // true for edit
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 int load_CapLopFile(DS_CAPLOP & ds_CapLop, char* fileName) {
     CAPLOP num[100];
     FILE * fptr;

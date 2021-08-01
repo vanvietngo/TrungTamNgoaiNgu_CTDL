@@ -1,6 +1,8 @@
 #include <iostream>
 #include"capLop.h"
 #include"lop.h"
+#include"hocVien.h"
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
@@ -42,6 +44,7 @@ int main() {
         cout << "| 6: Xuat thong tin lop                  |" << endl;
         cout << "| 7: Xoa lop                             |" << endl;
         cout << "| 8: Edit lop                            |" << endl;
+        cout << "| 9: Them hoc vien                       |" << endl;
         cout << "| 20: SAVE                               |" << endl;
         //-----------------------------------
         cout<<endl;
@@ -106,10 +109,35 @@ int main() {
         }
         case 9:
         {
-            // xoaLop(ds_CapLop);
+            themHocVien(ds_CapLop);
             break;
         }
         case 10:
+        {
+            xuatDanhSach_HV(ds_CapLop);
+            break;
+        }
+        case 11:
+        {
+            // xoaLop(ds_CapLop);
+            break;
+        }
+        case 12:
+        {
+            // xoaLop(ds_CapLop);
+            break;
+        }
+        case 13:
+        {
+            // xoaLop(ds_CapLop);
+            break;
+        }
+                case 14:
+        {
+            // xoaLop(ds_CapLop);
+            break;
+        }
+        case 15:
         {
             // xoaLop(ds_CapLop);
             break;

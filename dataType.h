@@ -13,13 +13,13 @@ using namespace std;
 
 struct _DIEM{
 	int Skill;	
-	struct _DIEM* next;
+	struct _DIEM* next = NULL;
 };      
 typedef struct _DIEM DIEM;
 
 struct _DS_DIEM{
 	int count = 0;
-	DIEM* ds_Diem;
+	DIEM* ds_Diem = NULL;
 };
 typedef struct _DS_DIEM DS_DIEM;
 
@@ -31,8 +31,8 @@ struct _HOCVIEN{
 	char Ho[10];
 	char Ten[10];
 	char Phai[5];
-	struct _HOCVIEN* pLeft;
-	struct _HOCVIEN* pRight;
+	struct _HOCVIEN* pLeft = NULL;
+	struct _HOCVIEN* pRight = NULL;
 	DS_DIEM ds_diem;
 
 };      
@@ -41,7 +41,7 @@ typedef struct _HOCVIEN HOCVIEN;
 
 struct _DS_HOCVIEN{
 	int count = 0;
-	HOCVIEN* dsHocVien=NULL;
+	HOCVIEN* root= NULL;
 };
 typedef struct _DS_HOCVIEN DS_HOCVIEN;
 

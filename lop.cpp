@@ -86,6 +86,7 @@ int themLop(DS_CAPLOP & ds_CapLop) {
 
 int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
     char maCapLop[10];
+    cout << " ... XUAT THONG TIN LOP ..."<<endl;
     cout << "Nhap ma CAP LOP cua lop can show: ";
     fflush(stdin);
     cin.getline(maCapLop, 10);
@@ -106,7 +107,7 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
             // xuat thong tin cac lop la dslk
             LOP * p = ds_CapLop.dsCapLop[posCL] -> ds_Lop.pHead_Lop;
             cout<<endl;
-            cout << "               Danh sach cap lop: " << endl<<endl;
+            cout << "               Danh sach lop: " << endl<<endl;
             cout <<"     "<< setw(5) << left << "Stt";
             cout << setw(15) << left << "Ma";
             cout << setw(15) << left << "Phong";
@@ -132,6 +133,7 @@ int xuatThongTinLop(DS_CAPLOP & ds_CapLop) {
 
 int xoaLop(DS_CAPLOP & ds_CapLop) {
     // nhap ma CAP LOP cua LOP can xoa
+    cout<<"... XOA LOP ..."<<endl;
     char maCapLop[10];
     cout << "Nhap ma CAP LOP cua LOP can xoa: ";
     fflush(stdin);
@@ -163,84 +165,6 @@ int xoaLop(DS_CAPLOP & ds_CapLop) {
     cout<<" ... complete ..."<<endl;
     return 1;
 }
-
-// additional
-int check_LapMaLop(DS_LOP ds_Lop, char * maLop) {
-    if (ds_Lop.count == 0) {
-        // cout << "count = 0 ko lap " << endl;
-        // ds lop null
-        return -2; // ko lap
-    } else {
-        LOP * p = ds_Lop.pHead_Lop;
-        int pos = 0;
-        while (p != NULL) {
-            if (strcmp(p -> Ma, maLop) == 0) {
-                return pos; // tim thay ma lop giong nhau,  position
-            }
-            p = p -> pNext;
-            pos++;
-        }
-        // cout << "ko lap " << endl;
-        return -1; // ko lap
-    }
-}
-
-void addNodeDSLK(DS_LOP & ds_Lop, LOP * lop) {
-    if (ds_Lop.count == 0) {
-        // add head
-        ds_Lop.pHead_Lop = lop;
-    } else {
-        LOP * p = ds_Lop.pHead_Lop;
-        while (p -> pNext != NULL) {
-            p = p -> pNext;
-        }
-        // tail
-        p -> pNext = lop;
-    }
-}
-
-int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
-    // check truong hop xoa
-    LOP* p;
-    // xoa dau
-    if( pos == 0 ) {
-        p = ds_Lop.pHead_Lop;
-        ds_Lop.pHead_Lop = ds_Lop.pHead_Lop->pNext;
-        p=NULL;
-        delete p;
-        ds_Lop.count--;
-        return 1;
-    }
-    //
-    // xoa cuoi
-    if(pos == ds_Lop.count - 1) {
-        p = ds_Lop.pHead_Lop;
-        while(p->pNext->pNext != NULL) {
-            p=p->pNext;
-        }
-        LOP* pdel = p->pNext;
-        p->pNext = NULL;
-        delete pdel;
-        ds_Lop.count--;
-        return 1;
-    }
-    // xoa node bat ki o giua
-    int mid = 1;
-    p = ds_Lop.pHead_Lop;
-    while(p->pNext->pNext != NULL && mid != pos) {
-        p = p->pNext;
-        mid++;
-    }
-    // xoa
-    LOP* pdel = p->pNext;
-    p->pNext = p->pNext->pNext;
-    delete pdel;
-    ds_Lop.count --;
-    return 1;
-}
-
-
-
 
 int hieuChinhLop(DS_CAPLOP &ds_CapLop)  {
     // nhap ma CAP LOP cua LOP can edit
@@ -380,6 +304,106 @@ int hieuChinhLop(DS_CAPLOP &ds_CapLop)  {
     cout<<"Khong tim thay ma LOP can edit"<<endl;
     return 0;
 }
+
+// additional
+int check_LapMaLop(DS_LOP ds_Lop, char * maLop) {
+    if (ds_Lop.count == 0) {
+        // cout << "count = 0 ko lap " << endl;
+        // ds lop null
+        return -2; // ko lap
+    } else {
+        LOP * p = ds_Lop.pHead_Lop;
+        int pos = 0;
+        while (p != NULL) {
+            if (strcmp(p -> Ma, maLop) == 0) {
+                return pos; // tim thay ma lop giong nhau,  position
+            }
+            p = p -> pNext;
+            pos++;
+        }
+        // cout << "ko lap " << endl;
+        return -1; // ko lap
+    }
+}
+
+void addNodeDSLK(DS_LOP & ds_Lop, LOP * lop) {
+    if (ds_Lop.count == 0) {
+        // add head
+        ds_Lop.pHead_Lop = lop;
+    } else {
+        LOP * p = ds_Lop.pHead_Lop;
+        while (p -> pNext != NULL) {
+            p = p -> pNext;
+        }
+        // tail
+        p -> pNext = lop;
+    }
+}
+
+int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
+    // check truong hop xoa
+    LOP* p;
+    // xoa dau
+    if( pos == 0 ) {
+        p = ds_Lop.pHead_Lop;
+        ds_Lop.pHead_Lop = ds_Lop.pHead_Lop->pNext;
+        p=NULL;
+        delete p;
+        ds_Lop.count--;
+        return 1;
+    }
+    //
+    // xoa cuoi
+    if(pos == ds_Lop.count - 1) {
+        p = ds_Lop.pHead_Lop;
+        while(p->pNext->pNext != NULL) {
+            p=p->pNext;
+        }
+        LOP* pdel = p->pNext;
+        p->pNext = NULL;
+        delete pdel;
+        ds_Lop.count--;
+        return 1;
+    }
+    // xoa node bat ki o giua
+    int mid = 1;
+    p = ds_Lop.pHead_Lop;
+    while(p->pNext->pNext != NULL && mid != pos) {
+        p = p->pNext;
+        mid++;
+    }
+    // xoa
+    LOP* pdel = p->pNext;
+    p->pNext = p->pNext->pNext;
+    delete pdel;
+    ds_Lop.count --;
+    return 1;
+}
+
+
+
+// LOP* searchLop(DS_LOP ds_Lop, char* maLop) {
+//  if (ds_Lop.count == 0) {
+//         // cout << "count = 0 ko lap " << endl;
+//         // ds lop null
+//         return NULL; // ko lap
+//     } else {
+//         LOP * p = ds_Lop.pHead_Lop;
+//         int pos = 0;
+//         while (p != NULL) {
+//             if (strcmp(p -> Ma, maLop) == 0) {
+//                 return p; // tim thay ma lop giong nhau,  position
+//             }
+//             p = p -> pNext;
+//             pos++;
+//         }
+//         // cout << "ko lap " << endl;
+//         return  NULL; // ko lap
+//     }
+// }
+
+
+
 //
 int saveFileLop(DS_LOP ds_Lop, char* fileLop) {
     FILE * f;
