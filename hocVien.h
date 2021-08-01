@@ -27,5 +27,9 @@ int editHocVien(DS_CAPLOP &ds_CapLop);
 int Check_lap_MHV(HOCVIEN* root, int maHV);
 int addNodeHocVien(HOCVIEN* &root, HOCVIEN *HocVien);
 void InOrder(HOCVIEN* root);
+HOCVIEN* searchHocVien(HOCVIEN* root, int maHV);
+int Check_lap_MHV(HOCVIEN * root, int maHV);
+
+
 
 #endif    // __hocVien_H__ 

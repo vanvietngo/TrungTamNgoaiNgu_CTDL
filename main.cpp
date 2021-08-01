@@ -45,7 +45,8 @@ int main() {
         cout << "| 7: Xoa lop                             |" << endl;
         cout << "| 8: Edit lop                            |" << endl;
         cout << "| 9: Them hoc vien                       |" << endl;
-        cout << "| 10: Xuat thong hoc vien                |" << endl;
+        cout << "| 10: Xuat thong tin hoc vien            |" << endl;
+        cout << "| 11: Hieu chinh thong tin hoc vien      |" << endl;
         cout << "| 20: SAVE                               |" << endl;
 
         //-----------------------------------
@@ -69,7 +70,7 @@ int main() {
         }
         case 1:
         {
-            system("cls");
+//            system("cls");
     
             // load_CapLopFile(ds_CapLop, urlCapLop);
             // for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
@@ -85,17 +86,7 @@ int main() {
         }
         case 2:
         {
-//            system("cls");
-//            DS_CAPLOP ds_CapLop;
-//            load_CapLopFile(ds_CapLop, urlCapLop);
-//            for(int count1 =0; count1 < ds_CapLop.count; count1++)	{
-//                strcpy(fileLop,xxx);
-//                strcat(fileLop,urlLop);
-//                strcat(fileLop, ds_CapLop.dsCapLop[count1]->Ma);
-//                strcat(fileLop, ".txt");
-//                openFileLop(ds_CapLop.dsCapLop[count1]->ds_Lop, fileLop);
-//
-//            }
+            // system("cls");
             xuatCapLop(ds_CapLop);
             break;
         }
