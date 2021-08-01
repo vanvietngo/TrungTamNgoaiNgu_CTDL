@@ -382,25 +382,25 @@ int deleteNodeDSLK(DS_LOP & ds_Lop, int pos) {
 
 
 
-// LOP* searchLop(DS_LOP ds_Lop, char* maLop) {
-//  if (ds_Lop.count == 0) {
-//         // cout << "count = 0 ko lap " << endl;
-//         // ds lop null
-//         return NULL; // ko lap
-//     } else {
-//         LOP * p = ds_Lop.pHead_Lop;
-//         int pos = 0;
-//         while (p != NULL) {
-//             if (strcmp(p -> Ma, maLop) == 0) {
-//                 return p; // tim thay ma lop giong nhau,  position
-//             }
-//             p = p -> pNext;
-//             pos++;
-//         }
-//         // cout << "ko lap " << endl;
-//         return  NULL; // ko lap
-//     }
-// }
+LOP* searchLop(DS_LOP ds_Lop, char* maLop) {
+ if (ds_Lop.count == 0) {
+        // cout << "count = 0 ko lap " << endl;
+        // ds lop null
+        return NULL; // ko lap
+    } else {
+        LOP * p = ds_Lop.pHead_Lop;
+        int pos = 0;
+        while (p != NULL) {
+            if (strcmp(p -> Ma, maLop) == 0) {
+                return p; // tim thay ma lop giong nhau,  position
+            }
+            p = p -> pNext;
+            pos++;
+        }
+        // cout << "ko lap " << endl;
+        return  NULL; // ko lap
+    }
+}
 
 
 

@@ -2,7 +2,6 @@
 // main function
 int themHocVien(DS_CAPLOP &ds_CapLop)   {
     cout << "... them HOC VIEN ..." << endl;
-    HOCVIEN* HocVien = new HOCVIEN;
     // tim ma cap lop
     char maCapLop[10];
     cout << "Nhap ma CAP LOP: ";
@@ -29,7 +28,7 @@ int themHocVien(DS_CAPLOP &ds_CapLop)   {
         return 0;
     }
     // Nhap thong tin hoc vien
-        
+        HOCVIEN* HocVien = new HOCVIEN;
     // char ho[10];
     // char ten[10];
     // char phai[10];
@@ -64,35 +63,19 @@ int themHocVien(DS_CAPLOP &ds_CapLop)   {
 
     int maHV    ;
     int checkMHV;
-      LOP * p = ds_CapLop.dsCapLop[posCL]->ds_Lop.pHead_Lop;
-        int pos = 0;
-        while (p != NULL) {
-            if (strcmp(p -> Ma, maLop) == 0) {
-                    do  {
+            LOP * lop ;
+        lop = searchLop(ds_CapLop.dsCapLop[posCL]->ds_Lop, maLop);
+    do  {
 
-                            // cout<<"lop tim thay la : "<<lop->Ma<<endl;
-                            maHV = rand() % (999 - 100 + 1) + 100;
-                            checkMHV = Check_lap_MHV(p->ds_HocVien.root, maHV);
-                        }
-                        while( checkMHV == 1 )  ; 
-                        HocVien->Ma = maHV;
-                        addNodeHocVien(p->ds_HocVien.root, HocVien);
-                        p->ds_HocVien.count ++;
-                        cout<<"done"<<endl;
-            }
-            p = p -> pNext;
-            pos++;
-        }
-    // do  {
-
-    //     // cout<<"lop tim thay la : "<<lop->Ma<<endl;
-    //     maHV = rand() % (999 - 100 + 1) + 100;
-    //     checkMHV = Check_lap_MHV(lop->ds_HocVien.root, maHV);
-    // }
-    // while( checkMHV == 1 )  ; 
-    // addNodeHocVien(lop->ds_HocVien.root, HocVien);
-    // lop->ds_HocVien.count ++;
-    // cout<<"done"<<endl;
+        // cout<<"lop tim thay la : "<<lop->Ma<<endl;
+        maHV = rand() % (999 - 100 + 1) + 100;
+        checkMHV = Check_lap_MHV(lop->ds_HocVien.root, maHV);
+    }
+    while( checkMHV == 1 )  ; 
+    HocVien->Ma = maHV;
+    addNodeHocVien(lop->ds_HocVien.root, HocVien);
+    lop->ds_HocVien.count ++;
+    cout<<"done"<<endl;
 
 
 return 1;
@@ -126,32 +109,15 @@ int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop)  {
         cout<<" Ma LOP khong ton tai"<<endl;
         return 0;
     }
-    //
-      LOP * p = ds_CapLop.dsCapLop[posCL]->ds_Lop.pHead_Lop;
-        int pos = 0;
-        while (p != NULL) {
-            if (strcmp(p -> Ma, maLop) == 0) {
-                if(p->ds_HocVien.count == 0)  {
-                    cout<<"Hoc vien trong ."<<endl;
-                    return 0;
-                }
-                else {
-                    InOrder(p->ds_HocVien.root);
-                    return 1;
-                }
-            }
-            p = p -> pNext;
-            pos++;
-        }
-    //
-    // lop = searchLop(ds_CapLop.dsCapLop[posCL]->ds_Lop, maLop);
-    // if(lop->ds_HocVien.count == 0)  {
-    //     cout<<"Hoc vien trong ."<<endl;
-    //     return 0;
-    // }
-    // else {
-    //     InOrder(lop->ds_HocVien.root);
-    // }
+    LOP * lop ;
+    lop = searchLop(ds_CapLop.dsCapLop[posCL]->ds_Lop, maLop);
+    if(lop->ds_HocVien.count == 0)  {
+        cout<<"Hoc vien trong ."<<endl;
+        return 0;
+    }
+    else {
+        InOrder(lop->ds_HocVien.root);
+    }
 }
 
 
@@ -190,9 +156,8 @@ void InOrder(HOCVIEN* root){
     if(root != NULL)
     {
         InOrder(root->pLeft);
-        cout<<"Hoc vien->ma : "<<root->Ma<<endl;
-        cout<<"Hoc vien ->ho: "<<root->Ho<<endl;
-        cout<<"Hoc vien ->ten: "<<root->Ho<<endl;
+        cout<<"Hoc vien : "<<root->Ma<<endl;
+        cout<<"Hoc vien : "<<root->Ho<<endl;
         InOrder(root->pRight);
     }
 }
