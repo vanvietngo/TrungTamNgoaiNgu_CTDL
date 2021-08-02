@@ -359,7 +359,7 @@ int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien)   {
 // open file
 
 int openFileHocVien(DS_HOCVIEN &ds_HocVien, char* fileHocVien)  {
-    cout<<"file = "<<fileHocVien<<endl;
+//    cout<<"file = "<<fileHocVien<<endl;
     FILE * fileHV;
     fileHV = fopen(fileHocVien, "rb");
     if (fileHV == NULL) {

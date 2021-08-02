@@ -20,7 +20,7 @@ int main() {
     char fileHocVien[100]="";
 
     bool kt_choice = true;
-    system("cls");
+//    system("cls");
 
     load_CapLopFile(ds_CapLop, urlCapLop);
     for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
@@ -34,14 +34,14 @@ int main() {
         LOP* lop;
 		lop = ds_CapLop.dsCapLop[count0]->ds_Lop.pHead_Lop;
         while(lop != NULL)  {
-            if(lop->ds_HocVien.root != NULL)    {
+//            if(lop->ds_HocVien.root != NULL)    {
                 // tao file HV
                 strcpy(fileHocVien, xxx);
                 strcat(fileHocVien,urlDB);
                 strcat(fileHocVien, lop->Ma);
                 strcat(fileHocVien, ".txt");  
                 openFileHocVien(lop->ds_HocVien, fileHocVien);
-            }
+//            }
             lop = lop->pNext;
         }
     }
