@@ -182,14 +182,14 @@ int main() {
                     // save file Hoc Vien
                     LOP* lop = ds_CapLop.dsCapLop[i]->ds_Lop.pHead_Lop;
                     while(lop != NULL)  {
-                        if(lop->ds_HocVien.root != NULL)    {
+//                         if(lop->ds_HocVien.root != NULL)    {
                             // tao file HV
                             strcpy(fileHocVien, xxx);
                             strcat(fileHocVien,urlDB);
                             strcat(fileHocVien, lop->Ma);
                             strcat(fileHocVien, ".txt");  
                             saveFileHocVien(lop->ds_HocVien, fileHocVien);
-                        }
+//                         }
                         lop = lop->pNext;
                     }
 
