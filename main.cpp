@@ -189,6 +189,10 @@ int main() {
                             strcat(fileHocVien, lop->Ma);
                             strcat(fileHocVien, ".txt");  
                             saveFileHocVien(lop->ds_HocVien, fileHocVien);
+
+                            // save file diem
+
+                            //
 //                         }
                         lop = lop->pNext;
                     }

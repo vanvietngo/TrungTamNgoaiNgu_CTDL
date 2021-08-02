@@ -31,6 +31,7 @@ int themHocVien(DS_CAPLOP & ds_CapLop) {
     }
     // Nhap thong tin hoc vien
     HOCVIEN * HocVien = new HOCVIEN;
+    // HocVien
     // char ho[10];
     // char ten[10];
     // char phai[10];
@@ -240,7 +241,7 @@ int xoaHocVien(DS_CAPLOP & ds_CapLop)   {
     // xoa - node cnp
      xoaNodeCNP(lop->ds_HocVien.root, maHV);
      lop->ds_HocVien.count--;
-    cout<<"done"<<endl;
+    cout<<"... complete ..."<<endl;
 
 }
 
@@ -276,11 +277,11 @@ int Check_lap_MHV(HOCVIEN * root, int maHV) {
 
 void InOrder(HOCVIEN * root) {
     if (root != NULL) {
-        InOrder(root -> pLeft);
         cout << "     " << setw(15) << left << root -> Ma;
         cout << setw(25) << left << root -> Ho;
         cout << setw(25) << left << root -> Ten;
         cout << setw(15) << left << root -> Phai << endl;
+        InOrder(root -> pLeft);
         InOrder(root -> pRight);
     }
 }
@@ -300,27 +301,28 @@ HOCVIEN* searchHocVien(HOCVIEN * root, int maHV) {
 
 int xoaNodeCNP(HOCVIEN * & root, int maHV)    {
     if (root -> Ma == maHV) {
-        // node xoa la node la
-        if(root->pLeft == NULL && root->pRight == NULL) {
-            delete root;
-            return 1;
-        }  
-        else if(root->pLeft != NULL && root->pRight == NULL)   {
+        cout<<"mahv xoa = "<<maHV<<endl;
+        if(root->pRight == NULL)   {
+             cout<<"1 l child"<<endl;
             HOCVIEN* del;
             del = root;
             root = root->pLeft;
             delete del;
             return 1;
         }
-        else if(root->pLeft == NULL && root->pRight != NULL)    {
+        else if(root->pLeft == NULL)    {
+             cout<<"1 r child"<<endl;
             HOCVIEN* del;
             del = root;
             root = root->pRight;
             delete del;
             return 1;
         }else {
+            cout<<"2 child"<<endl;
             // node have 2 child
-
+            HOCVIEN* x = leftMost(root->pRight);
+            root = x;
+            delete x;
             return 1;
         }
         return 1; // lap
@@ -332,13 +334,22 @@ int xoaNodeCNP(HOCVIEN * & root, int maHV)    {
 }
 
 
+// node trai nhat cua node con ben phai cua node can xoa;
+HOCVIEN* leftMost(HOCVIEN* root)    {
+    if(root -> pLeft == NULL)   {
+        return root;
+    }
+    else{
+        leftMost(root->pLeft);
+    }
+}
+
 
 
 void writeFile(HOCVIEN * root, FILE* f) {
     if (root != NULL) {
-        writeFile(root -> pLeft, f);
         fwrite(root, sizeof(HOCVIEN), 1, f);
-
+        writeFile(root -> pLeft, f);
         writeFile(root -> pRight, f);
     }
 }
