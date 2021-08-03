@@ -9,8 +9,6 @@ using namespace std;
 
 DS_CAPLOP ds_CapLop;
 
-
-
 int main() {
     int choice;
     char xxx[100]="";
