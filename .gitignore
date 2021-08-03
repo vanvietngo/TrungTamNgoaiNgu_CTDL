@@ -1,4 +1,4 @@
 *.o
 *.win
 *.exe
-*.txt
+# *.txt
