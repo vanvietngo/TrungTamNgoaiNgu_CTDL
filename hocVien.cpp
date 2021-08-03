@@ -83,7 +83,7 @@ int themHocVien(DS_CAPLOP & ds_CapLop) {
 }
 
 int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop) {
-    cout << "... them HOC VIEN ..." << endl;
+    cout << "... Hien thi thong tin HOC VIEN ..." << endl;
     // tim ma cap lop
     char maCapLop[10];
     cout << "Nhap ma CAP LOP: ";
