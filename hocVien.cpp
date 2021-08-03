@@ -1,6 +1,6 @@
 #include"hocVien.h"
 
- // main function
+// main function
 
 int themHocVien(DS_CAPLOP & ds_CapLop) {
     cout << "... them HOC VIEN ..." << endl;
@@ -127,7 +127,7 @@ int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop) {
     }
 }
 
-int editHocVien(DS_CAPLOP &ds_CapLop)   {
+int editHocVien(DS_CAPLOP & ds_CapLop) {
     cout << "... edit HOC VIEN ..." << endl;
     // tim ma cap lop
     char maCapLop[10];
@@ -158,25 +158,25 @@ int editHocVien(DS_CAPLOP &ds_CapLop)   {
     lop = searchLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, maLop);
     // check ma hoc vien
     int maHV;
-    cout<<"Nhap ma HOC VIEN can edit: ";
+    cout << "Nhap ma HOC VIEN can edit: ";
     cin >> maHV;
-    if(Check_lap_MHV(lop->ds_HocVien.root, maHV) == 0)  {
-        cout<<"Ma hoc vien khong ton tai"<<endl;
+    if (Check_lap_MHV(lop -> ds_HocVien.root, maHV) == 0) {
+        cout << "Ma hoc vien khong ton tai" << endl;
         return 0;
     }
     // ma HV  hop le
-    HOCVIEN* HocVien;
-    HocVien = searchHocVien(lop->ds_HocVien.root, maHV);
+    HOCVIEN * HocVien;
+    HocVien = searchHocVien(lop -> ds_HocVien.root, maHV);
     // cout<<"maHV = "<<HocVien->Ma<<endl;
     // cout<<"Ho = "<<HocVien->Ho<<endl;
-    cout<<"nhap ho new: ";
-            fflush(stdin);
+    cout << "nhap ho new: ";
+    fflush(stdin);
 
-    cin.getline(HocVien->Ho, 20);
-    cout <<"nhap ten new: ";
-            fflush(stdin);
+    cin.getline(HocVien -> Ho, 20);
+    cout << "nhap ten new: ";
+    fflush(stdin);
 
-    cin.getline(HocVien->Ten, 20);
+    cin.getline(HocVien -> Ten, 20);
     bool check = true;
     char nam[] = "Nam";
     char nu[] = "Nu";
@@ -196,12 +196,11 @@ int editHocVien(DS_CAPLOP &ds_CapLop)   {
         }
 
     } while (check);
-cout<<"done"<<endl;
-return 0;
+    cout << "done" << endl;
+    return 0;
 }
 
-
-int xoaHocVien(DS_CAPLOP & ds_CapLop)   {
+int xoaHocVien(DS_CAPLOP & ds_CapLop) {
     cout << "... Xoa HOC VIEN ..." << endl;
     // tim ma cap lop
     char maCapLop[10];
@@ -232,18 +231,40 @@ int xoaHocVien(DS_CAPLOP & ds_CapLop)   {
     lop = searchLop(ds_CapLop.dsCapLop[posCL] -> ds_Lop, maLop);
     // check ma hoc vien
     int maHV;
-    cout<<"Nhap ma HOC VIEN can xoa: ";
+    cout << "Nhap ma HOC VIEN can xoa: ";
     cin >> maHV;
-    if(Check_lap_MHV(lop->ds_HocVien.root, maHV) == 0)  {
-        cout<<"Ma hoc vien khong ton tai"<<endl;
+    if (Check_lap_MHV(lop -> ds_HocVien.root, maHV) == 0) {
+        cout << "Ma hoc vien khong ton tai" << endl;
         return 0;
     }
     // xoa - node cnp
-     xoaNodeCNP(lop->ds_HocVien.root, maHV);
-     lop->ds_HocVien.count--;
-    cout<<"... complete ..."<<endl;
+    xoaNodeCNP(lop -> ds_HocVien.root, maHV);
+    lop -> ds_HocVien.count--;
+    cout << "... complete ..." << endl;
 
 }
+
+int thongKeHV(DS_CAPLOP & ds_CapLop)    {
+    cout << "... HOC VIEN theo CAP LOP..." << endl;
+    // tim ma cap lop
+    char maCapLop[10];
+    cout << "Nhap ma CAP LOP: ";
+    fflush(stdin);
+    cin.getline(maCapLop, 10);
+    // check ma lop can them
+    //	cout<<"ma cl = "<<maCapLop;
+    int posCL = timViTriXoaCapLop(ds_CapLop, maCapLop);
+    //	cout<<"pos = "<<posCL;
+    if (posCL < 0) {
+        // false
+        cout << "Ma CAP LOP khong ton tai" << endl;
+        return 0;
+    }
+    // show
+    showHVtheoCL(ds_CapLop.dsCapLop[posCL]);
+    return 0;
+}
+
 
 
 //additional function
@@ -270,7 +291,7 @@ int Check_lap_MHV(HOCVIEN * root, int maHV) {
         return 1; // lap
     } else if (root -> Ma > maHV) {
         Check_lap_MHV(root -> pLeft, maHV);
-    } else if (root -> Ma < maHV){
+    } else if (root -> Ma < maHV) {
         Check_lap_MHV(root -> pRight, maHV);
     }
 }
@@ -286,7 +307,7 @@ void InOrder(HOCVIEN * root) {
     }
 }
 
-HOCVIEN* searchHocVien(HOCVIEN * root, int maHV) {
+HOCVIEN * searchHocVien(HOCVIEN * root, int maHV) {
 
     if (root -> Ma == maHV) {
         return root; // lap
@@ -298,29 +319,27 @@ HOCVIEN* searchHocVien(HOCVIEN * root, int maHV) {
     // return 0;
 }
 
-
-int xoaNodeCNP(HOCVIEN * & root, int maHV)    {
+int xoaNodeCNP(HOCVIEN * & root, int maHV) {
     if (root -> Ma == maHV) {
-        cout<<"mahv xoa = "<<maHV<<endl;
-        if(root->pRight == NULL)   {
-             cout<<"1 l child"<<endl;
-            HOCVIEN* del;
+        cout << "mahv xoa = " << maHV << endl;
+        if (root -> pRight == NULL) {
+            cout << "1 l child" << endl;
+            HOCVIEN * del;
             del = root;
-            root = root->pLeft;
+            root = root -> pLeft;
             delete del;
             return 1;
-        }
-        else if(root->pLeft == NULL)    {
-             cout<<"1 r child"<<endl;
-            HOCVIEN* del;
+        } else if (root -> pLeft == NULL) {
+            cout << "1 r child" << endl;
+            HOCVIEN * del;
             del = root;
-            root = root->pRight;
+            root = root -> pRight;
             delete del;
             return 1;
-        }else {
-            cout<<"2 child"<<endl;
+        } else {
+            cout << "2 child" << endl;
             // node have 2 child
-            HOCVIEN* x = leftMost(root->pRight);
+            HOCVIEN * x = leftMost(root -> pRight);
             root = x;
             delete x;
             return 1;
@@ -328,25 +347,21 @@ int xoaNodeCNP(HOCVIEN * & root, int maHV)    {
         return 1; // lap
     } else if (root -> Ma > maHV) {
         xoaNodeCNP(root -> pLeft, maHV);
-    } else if (root -> Ma < maHV){
+    } else if (root -> Ma < maHV) {
         xoaNodeCNP(root -> pRight, maHV);
     }
 }
 
-
 // node trai nhat cua node con ben phai cua node can xoa;
-HOCVIEN* leftMost(HOCVIEN* root)    {
-    if(root -> pLeft == NULL)   {
+HOCVIEN * leftMost(HOCVIEN * root) {
+    if (root -> pLeft == NULL) {
         return root;
-    }
-    else{
-        leftMost(root->pLeft);
+    } else {
+        leftMost(root -> pLeft);
     }
 }
 
-
-
-void writeFile(HOCVIEN * root, FILE* f) {
+void writeFile(HOCVIEN * root, FILE * f) {
     if (root != NULL) {
         fwrite(root, sizeof(HOCVIEN), 1, f);
         writeFile(root -> pLeft, f);
@@ -354,14 +369,14 @@ void writeFile(HOCVIEN * root, FILE* f) {
     }
 }
 
-int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien)   {
+int saveFileHocVien(DS_HOCVIEN ds_HocVien, char * fileHocVien) {
     FILE * f;
     f = fopen(fileHocVien, "wb");
     if (f == NULL) {
         cout << "";
-    //        exit(1);
+        //        exit(1);
     } else {
-        HOCVIEN* p = ds_HocVien.root;
+        HOCVIEN * p = ds_HocVien.root;
         writeFile(p, f);
         fclose(f);
     }
@@ -369,25 +384,47 @@ int saveFileHocVien(DS_HOCVIEN ds_HocVien, char* fileHocVien)   {
 
 // open file
 
-int openFileHocVien(DS_HOCVIEN &ds_HocVien, char* fileHocVien)  {
-//    cout<<"file = "<<fileHocVien<<endl;
+int openFileHocVien(DS_HOCVIEN & ds_HocVien, char * fileHocVien) {
+    //    cout<<"file = "<<fileHocVien<<endl;
     FILE * fileHV;
     fileHV = fopen(fileHocVien, "rb");
     if (fileHV == NULL) {
         cout << "";
         //        exit(1);
     } else {
-        HOCVIEN hocvien ;
+        HOCVIEN hocvien;
         ds_HocVien.count = 0;
         while (fread( & hocvien, sizeof(HOCVIEN), 1, fileHV)) {
-            HOCVIEN* hv = new HOCVIEN;
-            *hv = hocvien;
-            hv->pLeft = NULL;
-            hv->pRight = NULL;
+            HOCVIEN * hv = new HOCVIEN;
+            * hv = hocvien;
+            hv -> pLeft = NULL;
+            hv -> pRight = NULL;
             addNodeHocVien(ds_HocVien.root, hv);
-                ds_HocVien.count ++;
-            }
+            ds_HocVien.count++;
         }
-        fclose(fileHV);
-    return 0;    
+    }
+    fclose(fileHV);
+    return 0;
+}
+
+// show hv theo cl
+
+int showHVtheoCL(CAPLOP* capLop) {
+    cout<<endl<<endl<<"Ma CAP LOP: "<<capLop->Ma<<endl;
+    LOP* lop;
+    lop = capLop->ds_Lop.pHead_Lop;
+    while(lop != NULL)  {
+        cout<<"Ma lop: "<< lop->Ma<<endl;
+        cout << "Danh sach hoc vien: " << endl << endl;
+        cout << "     " << setw(15) << left << "Ma";
+        cout << setw(25) << left << "Ho";
+        cout << setw(25) << left << "Ten";
+        cout << setw(15) << left << "Phai" << endl;
+        cout << setfill('.');
+        cout << setw(85) << "" << endl;
+        cout << setfill(' ');
+        InOrder(lop->ds_HocVien.root);
+        cout<<endl<<endl;
+        lop = lop->pNext;
+        }
 }

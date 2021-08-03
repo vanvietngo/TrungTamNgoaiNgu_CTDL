@@ -2,6 +2,7 @@
 #include"capLop.h"
 #include"lop.h"
 #include"hocVien.h"
+#include"diem.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
@@ -23,6 +24,7 @@ int main() {
 //    system("cls");
 
     load_CapLopFile(ds_CapLop, urlCapLop);
+    // system("cls");
     for(int count0 =0; count0 < ds_CapLop.count; count0++)	{
         strcpy(fileLop,xxx);
         strcat(fileLop,urlDB);
@@ -65,6 +67,13 @@ int main() {
         cout << "| 10: Xuat thong tin hoc vien            |" << endl;
         cout << "| 11: Hieu chinh thong tin hoc vien      |" << endl;
         cout << "| 12: Xoa thong tin hoc vien             |" << endl;
+        // cout << "| 13: Them cap lop                       |" << endl;
+        cout << "| 13: Thong ke hoc vien theo cap lop     |" << endl;
+        cout << "| 1: Them cap lop                        |" << endl;
+        cout << "| 1: Them cap lop                        |" << endl;
+        cout << "| 1: Them cap lop                        |" << endl;
+        cout << "| 1: Them cap lop                        |" << endl;
+        cout << "| 1: Them cap lop                        |" << endl;
         
         cout << "| 20: SAVE                               |" << endl;
 
@@ -151,14 +160,14 @@ int main() {
             xoaHocVien(ds_CapLop);
             break;
         }
-        case 13:
+        // case 13:
+        // {
+        //     themDiem(ds_CapLop);
+        //     break;
+        // }
+                case 13:
         {
-            // xoaLop(ds_CapLop);
-            break;
-        }
-                case 14:
-        {
-            // xoaLop(ds_CapLop);
+            thongKeHV(ds_CapLop);
             break;
         }
         case 15:
@@ -199,6 +208,7 @@ int main() {
 
                 }
             }
+            cout<<"   ... saved ..."<<endl;
             break;
         }
         }
