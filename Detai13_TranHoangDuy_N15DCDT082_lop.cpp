@@ -1,4 +1,4 @@
-#include"lop.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_lop.h"
 
 // main function
 int themLop(DS_CAPLOP & ds_CapLop) {

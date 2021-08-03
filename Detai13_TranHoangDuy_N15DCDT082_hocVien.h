@@ -5,9 +5,9 @@
 
 #include<string>
 
-#include"dataType.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_dataType.h"
 
-#include"lop.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_lop.h"
 
 #include<cstdlib> // rand(); srand();   rand()% (b -a + 1) + a => [a;b]
 

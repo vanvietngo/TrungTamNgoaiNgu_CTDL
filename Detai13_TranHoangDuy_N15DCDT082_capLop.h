@@ -2,7 +2,7 @@
 #define	_capLop_heder
 
 
-#include"dataType.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_dataType.h"
 
 using namespace std;
 /*

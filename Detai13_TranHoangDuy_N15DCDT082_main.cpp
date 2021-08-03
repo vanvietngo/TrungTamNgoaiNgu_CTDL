@@ -1,8 +1,8 @@
 #include <iostream>
-#include"capLop.h"
-#include"lop.h"
-#include"hocVien.h"
-#include"diem.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_capLop.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_lop.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_hocVien.h"
+// #include"diem.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;

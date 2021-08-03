@@ -2,8 +2,8 @@
 #define      __lop_H__
 
 
-#include"dataType.h"
-#include"capLop.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_dataType.h"
+#include"Detai13_TranHoangDuy_N15DCDT082_capLop.h"
 /*    
 Lớp: danh sách liên kết đơn (Mã lớp, trạng thái, Phòng học, contrỏ). Mỗi lớp
 có 1 mã duy nhất; trạng thái của lớp bao gồm: 0: lớp chuẩn bị mở, 1: lớp đang 
