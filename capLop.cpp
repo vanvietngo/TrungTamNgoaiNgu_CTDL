@@ -230,7 +230,7 @@ int load_CapLopFile(DS_CAPLOP & ds_CapLop, char* fileName) {
     CAPLOP num[100];
     FILE * fptr;
     if ((fptr = fopen(fileName, "rb")) == NULL) {
-        printf("Error! opening file");
+        printf("Error! Invalid Url file Cap lop .");
         // exit(1);
     }
     int z = 0;

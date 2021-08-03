@@ -310,18 +310,27 @@ int _10LopHVdongNhat(DS_CAPLOP ds_CapLop) {
     }
 
     // show 10st array
-    cout << "Top 10 lop co HOC VIEN dong nhat: " << endl << endl;
+    cout << "                Top 10 lop co HOC VIEN dong nhat: " << endl << endl;
+    cout <<"     "<< setw(5) << left << "Stt";
+    cout << setw(15) << left << "Ma cap lop";
+    cout << setw(15) << left << "Ma lop";
+    cout << setw(20) << left << "So luong hoc vien"<<endl;
+    cout << setfill('.');
+    cout << setw(70) << "" << endl;
+    cout << setfill(' ');
     if (ds.count > 10) {
         for (int u = 0; u < 10; u++) {
-            cout << " ma CL : " << array[u].maCapLop << endl;
-            cout << "ma lop: " << array[u].maLop << endl;
-            cout << "cout HV: " << array[u].countHV << endl << endl << endl << endl;
+            cout <<"     "<< setw(5) << left << u;
+            cout << setw(15)<< array[u].maCapLop ;
+            cout << setw(15) << array[u].maLop ;
+            cout << setw(20)<< array[u].countHV << endl;
         }
     } else if (ds.count > 0) {
         for (int u = 0; u < ds.count; u++) {
-            cout << " ma CL : " << array[u].maCapLop << endl;
-            cout << "ma lop: " << array[u].maLop << endl;
-            cout << "cout HV: " << array[u].countHV << endl << endl << endl << endl;
+            cout <<"     "<< setw(5) << left << u;
+            cout << setw(15) << array[u].maCapLop ;
+            cout << setw(15) << array[u].maLop ;
+            cout << setw(15) << array[u].countHV <<  endl;
         }
     } else {
         cout << "Khong co lop ton tai !";
