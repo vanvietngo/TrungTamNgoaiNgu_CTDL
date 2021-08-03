@@ -69,12 +69,7 @@ int main() {
         cout << "| 12: Xoa thong tin hoc vien             |" << endl;
         // cout << "| 13: Them cap lop                       |" << endl;
         cout << "| 13: Thong ke hoc vien theo cap lop     |" << endl;
-        cout << "| 1: Them cap lop                        |" << endl;
-        cout << "| 1: Them cap lop                        |" << endl;
-        cout << "| 1: Them cap lop                        |" << endl;
-        cout << "| 1: Them cap lop                        |" << endl;
-        cout << "| 1: Them cap lop                        |" << endl;
-        
+        cout << "| 14: Top 10 lop HOC VIEN dong nhat      |" << endl;       
         cout << "| 20: SAVE                               |" << endl;
 
         //-----------------------------------
@@ -170,9 +165,9 @@ int main() {
             thongKeHV(ds_CapLop);
             break;
         }
-        case 15:
+        case 14:
         {
-            // xoaLop(ds_CapLop);
+            _10LopHVdongNhat(ds_CapLop);
             break;
         }
         case 20:

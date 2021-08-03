@@ -80,4 +80,18 @@ struct _DS_CAPLOP {
 };
 typedef struct _DS_CAPLOP DS_CAPLOP;
 
+struct countMaxLop {
+    string maCapLop;
+    string maLop;
+    int countHV;
+    countMaxLop *pNext = NULL;
+};
+typedef struct countMaxLop countMaxLop;
+
+struct _DS_countMaxLop {
+    int count = 0;
+    countMaxLop * pHead = NULL;
+};
+typedef struct _DS_countMaxLop DS_countMaxLop;
+
 #endif

@@ -244,7 +244,7 @@ int xoaHocVien(DS_CAPLOP & ds_CapLop) {
 
 }
 
-int thongKeHV(DS_CAPLOP & ds_CapLop)    {
+int thongKeHV(DS_CAPLOP ds_CapLop) {
     cout << "... HOC VIEN theo CAP LOP..." << endl;
     // tim ma cap lop
     char maCapLop[10];
@@ -265,7 +265,69 @@ int thongKeHV(DS_CAPLOP & ds_CapLop)    {
     return 0;
 }
 
+int _10LopHVdongNhat(DS_CAPLOP ds_CapLop) {
+    DS_countMaxLop ds;
 
+    for (int i = 0; i < ds_CapLop.count; i++) {
+        if (ds_CapLop.dsCapLop[i] -> ds_Lop.pHead_Lop != NULL) {
+            // cout<<"ma CAP LOP: "<<ds_CapLop.dsCapLop[i]->Ma<<endl;
+
+            LOP * lop = ds_CapLop.dsCapLop[i] -> ds_Lop.pHead_Lop;
+            while (lop != NULL) {
+                // cout<<"ma Lop = "<<lop->Ma<<endl;
+                countMaxLop * p = new countMaxLop;
+                p -> maCapLop = ds_CapLop.dsCapLop[i] -> Ma;
+                p -> maLop = lop -> Ma;
+                p -> countHV = lop -> ds_HocVien.count;
+                addNode_10HV_MAX(ds, p);
+                ds.count++;
+                lop = lop -> pNext;
+            }
+
+        }
+
+    }
+    // showNode_10Max(ds);
+    // chuyen dslk -> array
+    countMaxLop array[ds.count];
+    countMaxLop * p3 = ds.pHead;
+    int z = 0;
+    while (p3 != NULL) {
+        array[z] = * p3;
+        p3 = p3 -> pNext;
+        z++;
+    }
+    // sort array
+    for (int j = 0; j < ds.count - 1; j++) {
+        // cout<<"ma lop =- "<<array[j].maLop<<endl;
+        for (int l = j + 1; l < ds.count; l++) {
+            if (array[j].countHV < array[l].countHV) {
+                countMaxLop temp = array[j];
+                array[j] = array[l];
+                array[l] = temp;
+            }
+        }
+    }
+
+    // show 10st array
+    cout << "Top 10 lop co HOC VIEN dong nhat: " << endl << endl;
+    if (ds.count > 10) {
+        for (int u = 0; u < 10; u++) {
+            cout << " ma CL : " << array[u].maCapLop << endl;
+            cout << "ma lop: " << array[u].maLop << endl;
+            cout << "cout HV: " << array[u].countHV << endl << endl << endl << endl;
+        }
+    } else if (ds.count > 0) {
+        for (int u = 0; u < ds.count; u++) {
+            cout << " ma CL : " << array[u].maCapLop << endl;
+            cout << "ma lop: " << array[u].maLop << endl;
+            cout << "cout HV: " << array[u].countHV << endl << endl << endl << endl;
+        }
+    } else {
+        cout << "Khong co lop ton tai !";
+    }
+
+}
 
 //additional function
 
@@ -409,12 +471,12 @@ int openFileHocVien(DS_HOCVIEN & ds_HocVien, char * fileHocVien) {
 
 // show hv theo cl
 
-int showHVtheoCL(CAPLOP* capLop) {
-    cout<<endl<<endl<<"Ma CAP LOP: "<<capLop->Ma<<endl;
-    LOP* lop;
-    lop = capLop->ds_Lop.pHead_Lop;
-    while(lop != NULL)  {
-        cout<<"Ma lop: "<< lop->Ma<<endl;
+int showHVtheoCL(CAPLOP * capLop) {
+    cout << endl << endl << "Ma CAP LOP: " << capLop -> Ma << endl;
+    LOP * lop;
+    lop = capLop -> ds_Lop.pHead_Lop;
+    while (lop != NULL) {
+        cout << "Ma lop: " << lop -> Ma << endl;
         cout << "Danh sach hoc vien: " << endl << endl;
         cout << "     " << setw(15) << left << "Ma";
         cout << setw(25) << left << "Ho";
@@ -423,8 +485,34 @@ int showHVtheoCL(CAPLOP* capLop) {
         cout << setfill('.');
         cout << setw(85) << "" << endl;
         cout << setfill(' ');
-        InOrder(lop->ds_HocVien.root);
-        cout<<endl<<endl;
-        lop = lop->pNext;
+        InOrder(lop -> ds_HocVien.root);
+        cout << endl << endl;
+        lop = lop -> pNext;
+    }
+}
+
+// 10 lop hv dong nhat 
+int addNode_10HV_MAX(DS_countMaxLop & ds, countMaxLop * lop) {
+    if (ds.count == 0) {
+        // add head
+        ds.pHead = lop;
+    } else {
+        countMaxLop * p = ds.pHead;
+        while (p -> pNext != NULL) {
+            p = p -> pNext;
         }
+        // tail
+        p -> pNext = lop;
+    }
+}
+
+int showNode_10Max(DS_countMaxLop ds) {
+    countMaxLop * p = ds.pHead;
+    cout << "cout all lop = " << ds.count << endl;
+    while (p != NULL) {
+        cout << "ma CL: " << p -> maCapLop << endl;
+        cout << "malop: " << p -> maLop << endl;
+        cout << "cout HV: " << p -> countHV << endl << endl << endl << endl;
+        p = p -> pNext;
+    }
 }

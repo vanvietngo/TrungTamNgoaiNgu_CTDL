@@ -27,8 +27,9 @@ int themHocVien(DS_CAPLOP & ds_CapLop);
 int xuatDanhSach_HV(DS_CAPLOP & ds_CapLop);
 int editHocVien(DS_CAPLOP & ds_CapLop);
 int xoaHocVien(DS_CAPLOP & ds_CapLop);
-int thongKeHV(DS_CAPLOP & ds_CapLop);
-
+int thongKeHV(DS_CAPLOP  ds_CapLop);
+// In ra 10 lớp có số lượng học viên là đông nhất
+int _10LopHVdongNhat(DS_CAPLOP  ds_CapLop);
 
 // additional function
 
@@ -39,8 +40,12 @@ HOCVIEN * searchHocVien(HOCVIEN * root, int maHV);
 int Check_lap_MHV(HOCVIEN * root, int maHV);
 int xoaNodeCNP(HOCVIEN * & root, int maHV);
 int showHVtheoCL(CAPLOP *capLop);
+
 void writeFile(HOCVIEN * root, FILE * f);
 int saveFileHocVien(DS_HOCVIEN ds_HocVien, char * fileHocVien);
 int openFileHocVien(DS_HOCVIEN & ds_HocVien, char * fileHocVien);
+
+int addNode_10HV_MAX(DS_countMaxLop &ds, countMaxLop* lop);
+int showNode_10Max(DS_countMaxLop ds);
 
 #endif // __hocVien_H__ 

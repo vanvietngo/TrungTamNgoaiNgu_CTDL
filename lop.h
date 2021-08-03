@@ -27,7 +27,7 @@ int deleteNodeDSLK(DS_LOP & ds_Lop, int pos);
 
 LOP* searchLop(DS_LOP ds_Lop, char* maLop);
 HOCVIEN* leftMost(HOCVIEN* root);
-
+void add_countMaxLop(countMaxLop & Head_countMaxLop, countMaxLop * p);
 int saveFileLop(DS_LOP ds_Lop, char* fileLop);
 int openFileLop(DS_LOP& ds_Lop, char* fileLop);
 
